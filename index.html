@@ -8,508 +8,319 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --rose: #c8687a;
-    --rose-light: #f5dde2;
-    --rose-deep: #8c3a4a;
-    --blush: #fdf0f2;
-    --cream: #fdf8f5;
-    --ink: #2a1a1f;
-    --ink-soft: #6b4a52;
-    --gold: #c9a85c;
-    --gold-light: #f7eedd;
-    --border: rgba(200,104,122,0.18);
-    --shadow: 0 4px 24px rgba(140,58,74,0.08);
+    --rose: #c8687a; --rose-light: #f5dde2; --rose-deep: #8c3a4a;
+    --blush: #fdf0f2; --cream: #fdf8f5; --ink: #2a1a1f; --ink-soft: #6b4a52;
+    --gold: #c9a85c; --gold-light: #f7eedd;
+    --border: rgba(200,104,122,0.18); --shadow: 0 4px 24px rgba(140,58,74,0.08);
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    min-height: 100vh;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh; }
 
-  /* HERO HEADER */
+  /* WHO ARE YOU SCREEN */
+  .who-screen {
+    position:fixed; inset:0; background:linear-gradient(160deg,#f5dde2,#fdf0f2 50%,#f7eedd);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    z-index:1000; padding:2rem;
+  }
+  .who-screen h2 { font-family:'Playfair Display',serif; font-size:2rem; color:var(--rose-deep); margin-bottom:0.4rem; }
+  .who-screen p { color:var(--ink-soft); font-size:0.9rem; margin-bottom:2.5rem; text-align:center; }
+  .who-btns { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+  .who-btn {
+    padding:1.1rem 2.2rem; border-radius:999px; border:2px solid var(--rose);
+    background:white; font-family:'Playfair Display',serif; font-size:1.1rem;
+    color:var(--rose-deep); cursor:pointer; transition:all 0.2s; min-width:140px; text-align:center;
+  }
+  .who-btn:hover { background:var(--rose); color:white; transform:translateY(-2px); box-shadow:0 6px 20px rgba(200,104,122,0.3); }
+  .who-name-form { margin-top:2rem; text-align:center; }
+  .who-name-form input {
+    font-family:'Playfair Display',serif; font-size:1rem;
+    border:none; border-bottom:2px solid var(--rose);
+    background:transparent; color:var(--rose-deep); text-align:center;
+    padding:6px 10px; outline:none; width:180px;
+  }
+  .who-name-form button { margin-top:1rem; }
+
+  /* HERO */
   .hero {
-    background: linear-gradient(160deg, #f5dde2 0%, #fdf0f2 50%, #f7eedd 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 2.5rem 2rem 2rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    background:linear-gradient(160deg,#f5dde2 0%,#fdf0f2 50%,#f7eedd 100%);
+    border-bottom:1px solid var(--border); padding:1.8rem 2rem 1.4rem;
+    text-align:center; position:relative; overflow:hidden;
   }
-  .hero::before {
-    content: '♡';
-    position: absolute;
-    font-size: 180px;
-    opacity: 0.05;
-    top: -30px; right: -20px;
-    color: var(--rose);
-    pointer-events: none;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: var(--rose-deep);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  .hero h1 span { font-style: italic; color: var(--rose); }
-  .couple-names {
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    margin: 1rem 0 0.5rem;
-  }
+  .hero::before { content:'♡'; position:absolute; font-size:180px; opacity:0.05; top:-30px; right:-20px; color:var(--rose); pointer-events:none; }
+  .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.5rem); color:var(--rose-deep); letter-spacing:-0.02em; line-height:1.1; }
+  .hero h1 span { font-style:italic; color:var(--rose); }
+  .couple-names { display:flex; align-items:center; justify-content:center; gap:12px; margin:0.8rem 0 0.4rem; }
   .couple-names input {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    background: transparent;
-    border: none;
-    border-bottom: 1.5px solid var(--rose);
-    padding: 4px 8px;
-    color: var(--rose-deep);
-    text-align: center;
-    width: 130px;
-    outline: none;
+    font-family:'Playfair Display',serif; font-size:1rem; background:transparent;
+    border:none; border-bottom:1.5px solid var(--rose); padding:4px 8px;
+    color:var(--rose-deep); text-align:center; width:120px; outline:none;
   }
-  .couple-names input::placeholder { color: var(--rose); opacity: 0.5; }
-  .heart-sep { color: var(--rose); font-size: 1.2rem; }
-  .together-since {
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    margin-top: 0.4rem;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .together-since input[type="date"] {
-    border: none; border-bottom: 1px solid var(--rose);
-    background: transparent; color: var(--rose-deep);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem; outline: none; padding: 2px 4px;
-  }
-  .counter-pill {
-    display: inline-block;
-    background: var(--rose);
-    color: white;
-    border-radius: 999px;
-    padding: 3px 14px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-top: 0.6rem;
-  }
+  .couple-names input::placeholder { color:var(--rose); opacity:0.5; }
+  .heart-sep { color:var(--rose); font-size:1.2rem; }
+  .together-since { font-size:0.83rem; color:var(--ink-soft); margin-top:0.3rem; display:flex; align-items:center; justify-content:center; gap:8px; }
+  .together-since input[type="date"] { border:none; border-bottom:1px solid var(--rose); background:transparent; color:var(--rose-deep); font-family:'DM Sans',sans-serif; font-size:0.83rem; outline:none; padding:2px 4px; }
+  .counter-pill { display:inline-block; background:var(--rose); color:white; border-radius:999px; padding:3px 14px; font-size:0.78rem; font-weight:500; margin-top:0.5rem; }
 
-  /* NAV TABS */
-  .tabs {
-    display: flex;
-    gap: 0;
-    padding: 0 2rem;
-    border-bottom: 1.5px solid var(--border);
-    background: white;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  /* ACTIVE USER BADGE */
+  .active-badge {
+    position:absolute; top:12px; right:14px;
+    background:white; border:1.5px solid var(--rose); border-radius:999px;
+    padding:4px 14px; font-size:0.78rem; font-weight:500; color:var(--rose-deep);
+    display:flex; align-items:center; gap:6px; cursor:pointer;
   }
-  .tab {
-    padding: 1rem 1.4rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--ink-soft);
-    cursor: pointer;
-    border-bottom: 2.5px solid transparent;
-    white-space: nowrap;
-    transition: all 0.2s;
-    user-select: none;
+  .active-badge .dot { width:7px; height:7px; border-radius:50%; background:var(--rose); }
+
+  /* SYNC STATUS */
+  .sync-bar {
+    background:white; border-bottom:1px solid var(--border);
+    padding:5px 2rem; display:flex; align-items:center; justify-content:flex-end; gap:8px;
+    font-size:0.75rem; color:var(--ink-soft);
   }
-  .tab:hover { color: var(--rose); }
-  .tab.active { color: var(--rose-deep); border-bottom-color: var(--rose); }
+  .sync-dot { width:6px; height:6px; border-radius:50%; background:#aaa; }
+  .sync-dot.synced { background:#6ab04c; }
+  .sync-dot.syncing { background:var(--gold); animation:pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* TABS */
+  .tabs { display:flex; gap:0; padding:0 1.5rem; border-bottom:1.5px solid var(--border); background:white; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .tab { padding:0.9rem 1.2rem; font-size:0.88rem; font-weight:500; color:var(--ink-soft); cursor:pointer; border-bottom:2.5px solid transparent; white-space:nowrap; transition:all 0.2s; user-select:none; }
+  .tab:hover { color:var(--rose); }
+  .tab.active { color:var(--rose-deep); border-bottom-color:var(--rose); }
 
   /* PANELS */
-  .panels { padding: 2rem; max-width: 860px; margin: 0 auto; }
-  .panel { display: none; animation: fadeIn 0.3s ease; }
-  .panel.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .panels { padding:1.5rem; max-width:860px; margin:0 auto; }
+  .panel { display:none; animation:fadeIn 0.3s ease; }
+  .panel.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
 
-  /* SECTION TITLE */
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--rose-deep);
-    margin-bottom: 1.2rem;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-title span { font-size: 1.1rem; }
+  .section-title { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--rose-deep); margin-bottom:1rem; display:flex; align-items:center; gap:8px; }
 
-  /* CARDS */
-  .card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.4rem 1.6rem;
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow);
-  }
-  .card-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-  @media(max-width: 560px) { .card-row { grid-template-columns: 1fr; } }
+  .card { background:white; border:1px solid var(--border); border-radius:16px; padding:1.3rem 1.5rem; margin-bottom:1rem; box-shadow:var(--shadow); }
+  .card-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media(max-width:560px){.card-row{grid-template-columns:1fr}}
 
-  /* FORM ELEMENTS */
-  label { display: block; font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 4px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
-  input[type="text"], input[type="date"], textarea, select {
-    width: 100%; padding: 9px 12px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--ink);
-    background: var(--blush);
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  input:focus, textarea:focus, select:focus { border-color: var(--rose); background: white; }
-  textarea { resize: vertical; min-height: 80px; }
-  .btn {
-    padding: 10px 24px;
-    background: var(--rose);
-    color: white;
-    border: none;
-    border-radius: 999px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn:hover { background: var(--rose-deep); transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--rose);
-    border: 1.5px solid var(--rose);
-  }
-  .btn-ghost:hover { background: var(--rose-light); transform: none; }
-  .btn-sm { padding: 6px 14px; font-size: 0.8rem; }
-  .form-row { margin-bottom: 1rem; }
-  .form-actions { display: flex; gap: 10px; margin-top: 1.2rem; }
+  label { display:block; font-size:0.78rem; color:var(--ink-soft); margin-bottom:4px; font-weight:500; letter-spacing:0.04em; text-transform:uppercase; }
+  input[type="text"],input[type="date"],textarea,select { width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.93rem; color:var(--ink); background:var(--blush); outline:none; transition:border-color 0.2s; }
+  input:focus,textarea:focus,select:focus { border-color:var(--rose); background:white; }
+  textarea { resize:vertical; min-height:80px; }
+
+  .btn { padding:9px 22px; background:var(--rose); color:white; border:none; border-radius:999px; font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:500; cursor:pointer; transition:all 0.2s; }
+  .btn:hover { background:var(--rose-deep); transform:translateY(-1px); }
+  .btn-ghost { background:transparent; color:var(--rose); border:1.5px solid var(--rose); }
+  .btn-ghost:hover { background:var(--rose-light); transform:none; }
+  .form-row { margin-bottom:0.9rem; }
+  .form-actions { display:flex; gap:10px; margin-top:1rem; align-items:center; }
+
+  /* WHO ADDED BADGE */
+  .added-by { font-size:0.7rem; background:var(--blush); color:var(--rose-deep); padding:2px 8px; border-radius:999px; font-weight:500; }
 
   /* MEMORY ITEMS */
-  .memory-item {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.2rem 1.4rem;
-    margin-bottom: 0.8rem;
-    box-shadow: 0 2px 12px rgba(140,58,74,0.05);
-    display: flex; gap: 1rem; align-items: flex-start;
-    transition: box-shadow 0.2s;
-  }
-  .memory-item:hover { box-shadow: var(--shadow); }
-  .memory-emoji {
-    font-size: 1.8rem;
-    min-width: 44px; height: 44px;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--rose-light);
-    border-radius: 10px;
-  }
-  .memory-body { flex: 1; }
-  .memory-title { font-weight: 500; font-size: 1rem; margin-bottom: 2px; }
-  .memory-desc { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 4px; line-height: 1.5; }
-  .memory-meta { display: flex; gap: 10px; align-items: center; }
-  .memory-date { font-size: 0.78rem; color: var(--rose); font-weight: 500; }
-  .tag {
-    font-size: 0.72rem; padding: 2px 10px; border-radius: 999px;
-    background: var(--rose-light); color: var(--rose-deep); font-weight: 500;
-  }
-  .delete-btn {
-    background: none; border: none; cursor: pointer;
-    color: #ccc; font-size: 1rem; padding: 4px;
-    transition: color 0.2s; line-height: 1;
-  }
-  .delete-btn:hover { color: var(--rose); }
-  .empty-state {
-    text-align: center; padding: 3rem 1rem;
-    color: var(--ink-soft); font-size: 0.9rem;
-  }
-  .empty-state .big { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .memory-item { background:white; border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.3rem; margin-bottom:0.7rem; box-shadow:0 2px 12px rgba(140,58,74,0.05); display:flex; gap:0.9rem; align-items:flex-start; transition:box-shadow 0.2s; }
+  .memory-item:hover { box-shadow:var(--shadow); }
+  .memory-emoji { font-size:1.6rem; min-width:42px; height:42px; display:flex; align-items:center; justify-content:center; background:var(--rose-light); border-radius:10px; }
+  .memory-body { flex:1; }
+  .memory-title { font-weight:500; font-size:0.97rem; margin-bottom:2px; }
+  .memory-desc { font-size:0.83rem; color:var(--ink-soft); margin-bottom:4px; line-height:1.5; }
+  .memory-meta { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .memory-date { font-size:0.76rem; color:var(--rose); font-weight:500; }
+  .tag { font-size:0.7rem; padding:2px 9px; border-radius:999px; background:var(--rose-light); color:var(--rose-deep); font-weight:500; }
+  .delete-btn { background:none; border:none; cursor:pointer; color:#ccc; font-size:0.95rem; padding:4px; transition:color 0.2s; line-height:1; }
+  .delete-btn:hover { color:var(--rose); }
+  .empty-state { text-align:center; padding:2.5rem 1rem; color:var(--ink-soft); font-size:0.88rem; }
+  .empty-state .big { font-size:2.2rem; margin-bottom:0.5rem; }
 
-  /* ANNIVERSARY ITEMS */
-  .anni-item {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.1rem 1.4rem;
-    margin-bottom: 0.8rem;
-    display: flex; align-items: center; gap: 1.2rem;
-    box-shadow: 0 2px 12px rgba(140,58,74,0.04);
-  }
-  .anni-countdown {
-    text-align: center;
-    background: var(--rose-light);
-    border-radius: 12px;
-    padding: 0.6rem 1rem;
-    min-width: 70px;
-  }
-  .anni-days { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--rose-deep); line-height: 1; }
-  .anni-label { font-size: 0.7rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; }
-  .anni-body { flex: 1; }
-  .anni-name { font-weight: 500; font-size: 1rem; }
-  .anni-date { font-size: 0.82rem; color: var(--ink-soft); margin-top: 2px; }
-  .anni-soon { background: var(--gold-light); }
-  .anni-days-soon { color: var(--gold); }
-  .anni-today { background: var(--rose); }
-  .anni-days-today { color: white; }
-  .anni-label-today { color: rgba(255,255,255,0.8); }
+  /* ANNIVERSARY */
+  .anni-item { background:white; border:1px solid var(--border); border-radius:14px; padding:1rem 1.3rem; margin-bottom:0.7rem; display:flex; align-items:center; gap:1rem; box-shadow:0 2px 12px rgba(140,58,74,0.04); }
+  .anni-countdown { text-align:center; background:var(--rose-light); border-radius:12px; padding:0.5rem 0.9rem; min-width:64px; }
+  .anni-days { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--rose-deep); line-height:1; }
+  .anni-label { font-size:0.68rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em; }
+  .anni-body { flex:1; }
+  .anni-name { font-weight:500; font-size:0.96rem; }
+  .anni-date { font-size:0.8rem; color:var(--ink-soft); margin-top:2px; }
+  .anni-soon .anni-days { color:var(--gold); }
+  .anni-soon { background:var(--gold-light); }
+  .anni-today { background:var(--rose); }
+  .anni-today .anni-days, .anni-today .anni-label { color:white; }
 
-  /* DATE NIGHT */
-  .date-idea-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-  .date-idea {
-    background: white;
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 1rem;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
-    user-select: none;
-  }
-  .date-idea:hover, .date-idea.picked { border-color: var(--rose); background: var(--rose-light); }
-  .date-idea .di-emoji { font-size: 2rem; margin-bottom: 6px; }
-  .date-idea .di-name { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
-  .date-idea .di-desc { font-size: 0.75rem; color: var(--ink-soft); margin-top: 2px; }
-  .spin-area {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-  }
-  .spin-result {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--rose-deep);
-    margin: 1rem 0;
-    min-height: 2.2rem;
-  }
-  .spin-result span { font-style: italic; }
+  /* DATE IDEAS */
+  .date-idea-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.75rem; margin-bottom:1.3rem; }
+  .date-idea { background:white; border:1.5px solid var(--border); border-radius:14px; padding:0.9rem; cursor:pointer; text-align:center; transition:all 0.2s; user-select:none; }
+  .date-idea:hover,.date-idea.picked { border-color:var(--rose); background:var(--rose-light); }
+  .date-idea .di-emoji { font-size:1.8rem; margin-bottom:5px; }
+  .date-idea .di-name { font-size:0.82rem; font-weight:500; color:var(--ink); }
+  .date-idea .di-desc { font-size:0.72rem; color:var(--ink-soft); margin-top:2px; }
+  .spin-area { background:white; border:1px solid var(--border); border-radius:16px; padding:1.3rem; text-align:center; box-shadow:var(--shadow); }
+  .spin-result { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--rose-deep); margin:0.8rem 0; min-height:2rem; }
+  .spin-result span { font-style:italic; }
 
-  /* LOVE NOTES */
-  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media(max-width: 560px) { .notes-grid { grid-template-columns: 1fr; } }
-  .note-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.2rem;
-    box-shadow: var(--shadow);
-    position: relative;
-  }
-  .note-from {
-    font-size: 0.75rem; color: var(--rose);
-    font-weight: 500; text-transform: uppercase;
-    letter-spacing: 0.06em; margin-bottom: 6px;
-  }
-  .note-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--ink);
-    line-height: 1.6;
-  }
-  .note-ts { font-size: 0.72rem; color: #ccc; margin-top: 8px; }
-  .note-del {
-    position: absolute; top: 10px; right: 10px;
-    background: none; border: none; cursor: pointer;
-    color: #ddd; font-size: 0.9rem;
-    transition: color 0.2s;
-  }
-  .note-del:hover { color: var(--rose); }
+  /* NOTES */
+  .notes-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.9rem; }
+  @media(max-width:560px){.notes-grid{grid-template-columns:1fr}}
+  .note-card { background:white; border:1px solid var(--border); border-radius:14px; padding:1.1rem; box-shadow:var(--shadow); position:relative; }
+  .note-from { font-size:0.73rem; color:var(--rose); font-weight:500; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:5px; }
+  .note-text { font-family:'Playfair Display',serif; font-style:italic; font-size:0.92rem; color:var(--ink); line-height:1.6; }
+  .note-ts { font-size:0.7rem; color:#ccc; margin-top:7px; }
+  .note-del { position:absolute; top:9px; right:9px; background:none; border:none; cursor:pointer; color:#ddd; font-size:0.88rem; transition:color 0.2s; }
+  .note-del:hover { color:var(--rose); }
 
   /* STATS */
-  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-  .stat-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.2rem 1rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-  }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--rose-deep); line-height: 1; }
-  .stat-label { font-size: 0.78rem; color: var(--ink-soft); margin-top: 4px; }
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:0.9rem; margin-bottom:1.3rem; }
+  .stat-card { background:white; border:1px solid var(--border); border-radius:14px; padding:1.1rem 1rem; text-align:center; box-shadow:var(--shadow); }
+  .stat-num { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--rose-deep); line-height:1; }
+  .stat-label { font-size:0.76rem; color:var(--ink-soft); margin-top:4px; }
 
   /* MOOD */
-  .mood-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 0.5rem 0 1rem; }
-  .mood-btn {
-    background: var(--blush); border: 1.5px solid var(--border);
-    border-radius: 999px; padding: 6px 14px;
-    font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--ink);
-  }
-  .mood-btn:hover, .mood-btn.sel { background: var(--rose-light); border-color: var(--rose); color: var(--rose-deep); font-weight: 500; }
+  .mood-row { display:flex; gap:7px; flex-wrap:wrap; margin:0.4rem 0 0.9rem; }
+  .mood-btn { background:var(--blush); border:1.5px solid var(--border); border-radius:999px; padding:5px 12px; font-size:0.82rem; cursor:pointer; transition:all 0.2s; font-family:'DM Sans',sans-serif; color:var(--ink); }
+  .mood-btn:hover,.mood-btn.sel { background:var(--rose-light); border-color:var(--rose); color:var(--rose-deep); font-weight:500; }
 
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--rose-light); border-radius: 3px; }
+  /* LOADING */
+  .loading-overlay { position:fixed; inset:0; background:rgba(253,248,245,0.92); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:500; }
+  .loading-heart { font-size:2.5rem; animation:heartbeat 0.8s infinite; }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+  .loading-text { margin-top:0.8rem; color:var(--ink-soft); font-size:0.85rem; }
 
-  /* confetti burst */
-  .confetti { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+  .confetti { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; }
+
+  ::-webkit-scrollbar { width:5px; height:5px; }
+  ::-webkit-scrollbar-thumb { background:var(--rose-light); border-radius:3px; }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>Our <span>Love</span> Story</h1>
-  <div class="couple-names">
-    <input type="text" id="name1" placeholder="Your name" maxlength="20">
-    <span class="heart-sep">♡</span>
-    <input type="text" id="name2" placeholder="Partner's name" maxlength="20">
-  </div>
-  <div class="together-since">
-    <span>Together since</span>
-    <input type="date" id="startDate">
-  </div>
-  <div id="dayCounter" class="counter-pill" style="display:none;"></div>
+<!-- LOADING -->
+<div class="loading-overlay" id="loading">
+  <div class="loading-heart">♡</div>
+  <div class="loading-text">Loading your story…</div>
 </div>
 
-<!-- TABS -->
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('memories')">✨ Memories</div>
-  <div class="tab" onclick="switchTab('anniversaries')">📅 Anniversaries</div>
-  <div class="tab" onclick="switchTab('datenights')">🌙 Date Nights</div>
-  <div class="tab" onclick="switchTab('notes')">💌 Love Notes</div>
-  <div class="tab" onclick="switchTab('stats')">💖 Our Stats</div>
+<!-- WHO ARE YOU SCREEN -->
+<div class="who-screen" id="whoScreen" style="display:none;">
+  <h2>Welcome back ♡</h2>
+  <p id="who-subtitle">Who's opening the app right now?</p>
+  <div class="who-btns" id="who-btns"></div>
+  <div class="who-name-form" id="who-name-form" style="display:none;">
+    <p style="color:var(--ink-soft);font-size:0.85rem;margin-bottom:0.8rem;">What's your name?</p>
+    <input type="text" id="new-person-name" placeholder="Your name" maxlength="20">
+    <br>
+    <button class="btn" style="margin-top:0.9rem;" onclick="confirmNewPerson()">Join ♡</button>
+  </div>
 </div>
 
-<!-- PANELS -->
-<div class="panels">
+<!-- MAIN APP -->
+<div id="app" style="display:none;">
 
-  <!-- MEMORIES PANEL -->
-  <div class="panel active" id="panel-memories">
-    <div class="section-title"><span>✨</span> Our Memories</div>
-
-    <div class="card">
-      <div class="card-row">
-        <div class="form-row">
-          <label>Memory Title</label>
-          <input type="text" id="m-title" placeholder="First date at the Italian place…">
-        </div>
-        <div class="form-row">
-          <label>Date</label>
-          <input type="date" id="m-date">
-        </div>
-      </div>
-      <div class="form-row">
-        <label>Description</label>
-        <textarea id="m-desc" placeholder="What made this moment special?"></textarea>
-      </div>
-      <div class="card-row">
-        <div class="form-row">
-          <label>Category</label>
-          <select id="m-cat">
-            <option value="🌹 Romantic">🌹 Romantic</option>
-            <option value="✈️ Travel">✈️ Travel</option>
-            <option value="🍽️ Food">🍽️ Food & Drink</option>
-            <option value="🎉 Celebration">🎉 Celebration</option>
-            <option value="🏠 Home">🏠 At Home</option>
-            <option value="🎭 Adventure">🎭 Adventure</option>
-            <option value="💫 Milestone">💫 Milestone</option>
-            <option value="😂 Funny">😂 Funny</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>Feeling</label>
-          <select id="m-feel">
-            <option value="💕 Loved">💕 Loved</option>
-            <option value="😄 Happy">😄 Happy</option>
-            <option value="🥹 Touched">🥹 Touched</option>
-            <option value="😍 In awe">😍 In awe</option>
-            <option value="😂 Hilarious">😂 Hilarious</option>
-            <option value="🥰 Cozy">🥰 Cozy</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button class="btn" onclick="addMemory()">Add Memory ♡</button>
-      </div>
+  <div class="hero">
+    <div class="active-badge" onclick="switchUser()" title="Switch user">
+      <div class="dot"></div>
+      <span id="active-user-name">You</span>
+      <span style="opacity:0.5;font-size:0.7rem;">▾</span>
     </div>
-
-    <div id="memories-list"></div>
+    <h1>Our <span>Love</span> Story</h1>
+    <div class="couple-names">
+      <input type="text" id="name1" placeholder="Name 1" maxlength="20">
+      <span class="heart-sep">♡</span>
+      <input type="text" id="name2" placeholder="Name 2" maxlength="20">
+    </div>
+    <div class="together-since">
+      <span>Together since</span>
+      <input type="date" id="startDate">
+    </div>
+    <div id="dayCounter" class="counter-pill" style="display:none;"></div>
   </div>
 
-  <!-- ANNIVERSARIES PANEL -->
-  <div class="panel" id="panel-anniversaries">
-    <div class="section-title"><span>📅</span> Important Dates</div>
-
-    <div class="card">
-      <div class="card-row">
-        <div class="form-row">
-          <label>Date Name</label>
-          <input type="text" id="a-name" placeholder="First kiss, Engagement…">
-        </div>
-        <div class="form-row">
-          <label>Date</label>
-          <input type="date" id="a-date">
-        </div>
-      </div>
-      <div class="form-actions">
-        <button class="btn" onclick="addAnniversary()">Add Date ♡</button>
-      </div>
-    </div>
-
-    <div id="anniversaries-list"></div>
+  <div class="sync-bar">
+    <div class="sync-dot synced" id="syncDot"></div>
+    <span id="syncText">Synced</span>
   </div>
 
-  <!-- DATE NIGHTS PANEL -->
-  <div class="panel" id="panel-datenights">
-    <div class="section-title"><span>🌙</span> Date Night Ideas</div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('memories',this)">✨ Memories</div>
+    <div class="tab" onclick="switchTab('anniversaries',this)">📅 Dates</div>
+    <div class="tab" onclick="switchTab('datenights',this)">🌙 Date Nights</div>
+    <div class="tab" onclick="switchTab('notes',this)">💌 Notes</div>
+    <div class="tab" onclick="switchTab('stats',this)">💖 Stats</div>
+  </div>
 
-    <div class="date-idea-grid" id="date-ideas-grid"></div>
+  <div class="panels">
 
-    <div class="spin-area">
-      <div style="font-size:0.85rem; color:var(--ink-soft); margin-bottom: 0.5rem;">Can't decide? Let fate choose ✨</div>
-      <div class="spin-result" id="spin-result">—</div>
-      <button class="btn" onclick="spinDateIdea()">✨ Pick For Us!</button>
-    </div>
-
-    <div style="margin-top: 1.5rem;">
-      <div class="section-title" style="font-size: 1.1rem;"><span>📝</span> Add Custom Idea</div>
+    <!-- MEMORIES -->
+    <div class="panel active" id="panel-memories">
+      <div class="section-title"><span>✨</span> Our Memories</div>
       <div class="card">
         <div class="card-row">
-          <div class="form-row">
-            <label>Idea Name</label>
-            <input type="text" id="di-name" placeholder="Stargazing picnic…">
+          <div class="form-row"><label>Memory Title</label><input type="text" id="m-title" placeholder="First date at the Italian place…"></div>
+          <div class="form-row"><label>Date</label><input type="date" id="m-date"></div>
+        </div>
+        <div class="form-row"><label>Description</label><textarea id="m-desc" placeholder="What made this moment special?"></textarea></div>
+        <div class="card-row">
+          <div class="form-row"><label>Category</label>
+            <select id="m-cat">
+              <option value="🌹 Romantic">🌹 Romantic</option>
+              <option value="✈️ Travel">✈️ Travel</option>
+              <option value="🍽️ Food">🍽️ Food & Drink</option>
+              <option value="🎉 Celebration">🎉 Celebration</option>
+              <option value="🏠 Home">🏠 At Home</option>
+              <option value="🎭 Adventure">🎭 Adventure</option>
+              <option value="💫 Milestone">💫 Milestone</option>
+              <option value="😂 Funny">😂 Funny</option>
+            </select>
           </div>
-          <div class="form-row">
-            <label>Emoji</label>
-            <input type="text" id="di-emoji" placeholder="🌟" maxlength="2">
+          <div class="form-row"><label>Feeling</label>
+            <select id="m-feel">
+              <option value="💕 Loved">💕 Loved</option>
+              <option value="😄 Happy">😄 Happy</option>
+              <option value="🥹 Touched">🥹 Touched</option>
+              <option value="😍 In awe">😍 In awe</option>
+              <option value="😂 Hilarious">😂 Hilarious</option>
+              <option value="🥰 Cozy">🥰 Cozy</option>
+            </select>
           </div>
         </div>
-        <div class="form-row">
-          <label>Description</label>
-          <input type="text" id="di-desc" placeholder="Pack a blanket and snacks">
+        <div class="form-actions"><button class="btn" onclick="addMemory()">Add Memory ♡</button></div>
+      </div>
+      <div id="memories-list"></div>
+    </div>
+
+    <!-- ANNIVERSARIES -->
+    <div class="panel" id="panel-anniversaries">
+      <div class="section-title"><span>📅</span> Important Dates</div>
+      <div class="card">
+        <div class="card-row">
+          <div class="form-row"><label>Date Name</label><input type="text" id="a-name" placeholder="First kiss, Engagement…"></div>
+          <div class="form-row"><label>Date</label><input type="date" id="a-date"></div>
         </div>
-        <div class="form-actions">
-          <button class="btn" onclick="addDateIdea()">Add Idea</button>
+        <div class="form-actions"><button class="btn" onclick="addAnniversary()">Add Date ♡</button></div>
+      </div>
+      <div id="anniversaries-list"></div>
+    </div>
+
+    <!-- DATE NIGHTS -->
+    <div class="panel" id="panel-datenights">
+      <div class="section-title"><span>🌙</span> Date Night Ideas</div>
+      <div class="date-idea-grid" id="date-ideas-grid"></div>
+      <div class="spin-area">
+        <div style="font-size:0.83rem;color:var(--ink-soft);margin-bottom:0.5rem;">Can't decide? Let fate choose ✨</div>
+        <div class="spin-result" id="spin-result">—</div>
+        <button class="btn" onclick="spinDateIdea()">✨ Pick For Us!</button>
+      </div>
+      <div style="margin-top:1.4rem;">
+        <div class="section-title" style="font-size:1.05rem;"><span>📝</span> Add Custom Idea</div>
+        <div class="card">
+          <div class="card-row">
+            <div class="form-row"><label>Idea Name</label><input type="text" id="di-name" placeholder="Stargazing picnic…"></div>
+            <div class="form-row"><label>Emoji</label><input type="text" id="di-emoji" placeholder="🌟" maxlength="2"></div>
+          </div>
+          <div class="form-row"><label>Description</label><input type="text" id="di-desc" placeholder="Pack a blanket and snacks"></div>
+          <div class="form-actions"><button class="btn" onclick="addDateIdea()">Add Idea</button></div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- LOVE NOTES PANEL -->
-  <div class="panel" id="panel-notes">
-    <div class="section-title"><span>💌</span> Love Notes</div>
-    <div class="card">
-      <div class="card-row">
-        <div class="form-row">
-          <label>From</label>
-          <input type="text" id="n-from" placeholder="Your name">
-        </div>
+    <!-- LOVE NOTES -->
+    <div class="panel" id="panel-notes">
+      <div class="section-title"><span>💌</span> Love Notes</div>
+      <div class="card">
         <div class="form-row">
           <label>Mood</label>
           <div class="mood-row" id="mood-row">
@@ -520,226 +331,335 @@
             <button class="mood-btn" onclick="selectMood(this,'🥹 Sentimental')">🥹 Sentimental</button>
           </div>
         </div>
+        <div class="form-row"><label>Your Note</label><textarea id="n-text" placeholder="Write something sweet…"></textarea></div>
+        <div class="form-actions"><button class="btn" onclick="addNote()">Send Note 💌</button></div>
       </div>
-      <div class="form-row">
-        <label>Your Note</label>
-        <textarea id="n-text" placeholder="Write something sweet…"></textarea>
-      </div>
-      <div class="form-actions">
-        <button class="btn" onclick="addNote()">Send Note 💌</button>
-      </div>
+      <div class="notes-grid" id="notes-list"></div>
     </div>
-    <div class="notes-grid" id="notes-list"></div>
-  </div>
 
-  <!-- STATS PANEL -->
-  <div class="panel" id="panel-stats">
-    <div class="section-title"><span>💖</span> Our Story in Numbers</div>
-    <div class="stats-grid" id="stats-grid"></div>
-
-    <div class="card" style="margin-top: 1rem;">
-      <div class="section-title" style="font-size:1rem; margin-bottom: 0.8rem;"><span>🌡️</span> Relationship Vibe Check</div>
-      <p style="font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1rem;">How are you both feeling today?</p>
-      <div class="card-row">
-        <div>
-          <label id="vibe-label-1">Partner 1 vibes</label>
-          <div class="mood-row">
-            <button class="mood-btn" onclick="setVibe(1,this,'🔥 On fire')">🔥 On fire</button>
-            <button class="mood-btn" onclick="setVibe(1,this,'💕 Loving')">💕 Loving</button>
-            <button class="mood-btn" onclick="setVibe(1,this,'😊 Good')">😊 Good</button>
-            <button class="mood-btn" onclick="setVibe(1,this,'😔 Meh')">😔 Meh</button>
+    <!-- STATS -->
+    <div class="panel" id="panel-stats">
+      <div class="section-title"><span>💖</span> Our Story in Numbers</div>
+      <div class="stats-grid" id="stats-grid"></div>
+      <div class="card" style="margin-top:0.8rem;">
+        <div class="section-title" style="font-size:0.98rem;margin-bottom:0.7rem;"><span>🌡️</span> Vibe Check</div>
+        <p style="font-size:0.83rem;color:var(--ink-soft);margin-bottom:0.9rem;">How are you both feeling today?</p>
+        <div class="card-row">
+          <div><label id="vibe-label-1">Partner 1</label>
+            <div class="mood-row">
+              <button class="mood-btn" onclick="setVibe(1,this,'🔥 On fire')">🔥 On fire</button>
+              <button class="mood-btn" onclick="setVibe(1,this,'💕 Loving')">💕 Loving</button>
+              <button class="mood-btn" onclick="setVibe(1,this,'😊 Good')">😊 Good</button>
+              <button class="mood-btn" onclick="setVibe(1,this,'😔 Meh')">😔 Meh</button>
+            </div>
+          </div>
+          <div><label id="vibe-label-2">Partner 2</label>
+            <div class="mood-row">
+              <button class="mood-btn" onclick="setVibe(2,this,'🔥 On fire')">🔥 On fire</button>
+              <button class="mood-btn" onclick="setVibe(2,this,'💕 Loving')">💕 Loving</button>
+              <button class="mood-btn" onclick="setVibe(2,this,'😊 Good')">😊 Good</button>
+              <button class="mood-btn" onclick="setVibe(2,this,'😔 Meh')">😔 Meh</button>
+            </div>
           </div>
         </div>
-        <div>
-          <label id="vibe-label-2">Partner 2 vibes</label>
-          <div class="mood-row">
-            <button class="mood-btn" onclick="setVibe(2,this,'🔥 On fire')">🔥 On fire</button>
-            <button class="mood-btn" onclick="setVibe(2,this,'💕 Loving')">💕 Loving</button>
-            <button class="mood-btn" onclick="setVibe(2,this,'😊 Good')">😊 Good</button>
-            <button class="mood-btn" onclick="setVibe(2,this,'😔 Meh')">😔 Meh</button>
-          </div>
-        </div>
+        <div id="vibe-result" style="margin-top:0.9rem;text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:var(--rose-deep);font-size:0.97rem;"></div>
       </div>
-      <div id="vibe-result" style="margin-top: 1rem; text-align:center; font-family:'Playfair Display',serif; font-style:italic; color: var(--rose-deep); font-size: 1rem;"></div>
     </div>
-  </div>
 
-</div>
+  </div><!-- /panels -->
+</div><!-- /app -->
 
 <script>
-// ---- DATA LAYER ----
-let data = {
-  name1: '', name2: '', startDate: '',
-  memories: [], anniversaries: [], dateIdeas: [], notes: [],
-  vibe1: '', vibe2: ''
-};
+// ===== SHARED STORAGE KEY =====
+const STORE_KEY = 'couple-tracker-shared';
 
-const DEFAULT_DATE_IDEAS = [
-  { emoji: '🍳', name: 'Cook Together', desc: 'Try a new recipe at home' },
-  { emoji: '🎬', name: 'Movie Night', desc: 'Cozy cinema at home' },
-  { emoji: '🌅', name: 'Sunrise Walk', desc: 'Early morning adventure' },
-  { emoji: '🍷', name: 'Wine & Cheese', desc: 'Fancy fridge raid evening' },
-  { emoji: '🎲', name: 'Game Night', desc: 'Board games & laughter' },
-  { emoji: '🌿', name: 'Picnic', desc: 'Park, blanket, snacks' },
-  { emoji: '🎨', name: 'Paint Night', desc: 'Get creative together' },
-  { emoji: '💆', name: 'Spa Night', desc: 'At-home pampering' },
-  { emoji: '🎭', name: 'Explore', desc: 'New neighbourhood walk' },
-  { emoji: '🌟', name: 'Stargazing', desc: 'Dark spot + blanket' },
-  { emoji: '📚', name: 'Book Club', desc: 'Read the same book' },
-  { emoji: '🎵', name: 'Dance Night', desc: 'Living room dancing' },
+// ===== DEFAULT DATA =====
+const DEFAULT_IDEAS = [
+  {emoji:'🍳',name:'Cook Together',desc:'Try a new recipe at home'},
+  {emoji:'🎬',name:'Movie Night',desc:'Cozy cinema at home'},
+  {emoji:'🌅',name:'Sunrise Walk',desc:'Early morning adventure'},
+  {emoji:'🍷',name:'Wine & Cheese',desc:'Fancy fridge raid evening'},
+  {emoji:'🎲',name:'Game Night',desc:'Board games & laughter'},
+  {emoji:'🌿',name:'Picnic',desc:'Park, blanket, snacks'},
+  {emoji:'🎨',name:'Paint Night',desc:'Get creative together'},
+  {emoji:'💆',name:'Spa Night',desc:'At-home pampering'},
+  {emoji:'🎭',name:'Explore',desc:'New neighbourhood walk'},
+  {emoji:'🌟',name:'Stargazing',desc:'Dark spot + blanket'},
+  {emoji:'📚',name:'Book Club',desc:'Read the same book'},
+  {emoji:'🎵',name:'Dance Night',desc:'Living room dancing'},
 ];
 
-function save() { localStorage.setItem('love-tracker', JSON.stringify(data)); }
+let shared = {
+  name1:'', name2:'', startDate:'',
+  persons: [],   // [{id, name}]
+  memories:[], anniversaries:[], dateIdeas:[], notes:[],
+  vibes:{}       // {personId: {vibe, ts}}
+};
 
-function load() {
+let currentPerson = null; // {id, name}
+
+// ===== STORAGE =====
+async function loadShared() {
   try {
-    const raw = localStorage.getItem('love-tracker');
-    if (raw) {
-      const d = JSON.parse(raw);
-      Object.assign(data, d);
+    const r = await window.storage.get(STORE_KEY, true);
+    if (r && r.value) {
+      const d = JSON.parse(r.value);
+      Object.assign(shared, d);
+    }
+  } catch(e) { /* first load */ }
+  if (!shared.dateIdeas || !shared.dateIdeas.length) shared.dateIdeas = [...DEFAULT_IDEAS];
+}
+
+async function saveShared() {
+  setSyncState('syncing');
+  try {
+    await window.storage.set(STORE_KEY, JSON.stringify(shared), true);
+    setSyncState('synced');
+  } catch(e) { setSyncState('error'); }
+}
+
+function setSyncState(state) {
+  const dot = document.getElementById('syncDot');
+  const txt = document.getElementById('syncText');
+  if (!dot) return;
+  dot.className = 'sync-dot';
+  if (state === 'synced') { dot.classList.add('synced'); txt.textContent = 'Synced ✓'; }
+  else if (state === 'syncing') { dot.classList.add('syncing'); txt.textContent = 'Saving…'; }
+  else { txt.textContent = 'Offline'; }
+}
+
+// ===== WHO ARE YOU SCREEN =====
+function showWhoScreen() {
+  document.getElementById('whoScreen').style.display = 'flex';
+  const sub = document.getElementById('who-subtitle');
+  const btns = document.getElementById('who-btns');
+  btns.innerHTML = '';
+
+  if (shared.persons.length === 0) {
+    sub.textContent = "Let's set up your couple account!";
+    // No persons yet — show "I'm partner 1" setup
+    document.getElementById('who-name-form').style.display = 'block';
+    document.getElementById('who-name-form').querySelector('p').textContent = "What's your name?";
+  } else {
+    sub.textContent = 'Who\'s opening the app right now?';
+    shared.persons.forEach(p => {
+      const btn = document.createElement('button');
+      btn.className = 'who-btn';
+      btn.textContent = p.name;
+      btn.onclick = () => enterAs(p);
+      btns.appendChild(btn);
+    });
+    if (shared.persons.length < 2) {
+      const btn = document.createElement('button');
+      btn.className = 'who-btn';
+      btn.style.borderStyle = 'dashed';
+      btn.textContent = "I'm new here ♡";
+      btn.onclick = () => { document.getElementById('who-name-form').style.display = 'block'; };
+      btns.appendChild(btn);
+    }
+  }
+}
+
+function confirmNewPerson() {
+  const name = document.getElementById('new-person-name').value.trim();
+  if (!name) return;
+  const person = { id: Date.now().toString(), name };
+  shared.persons.push(person);
+  // Auto-fill couple names
+  if (!shared.name1) shared.name1 = name;
+  else if (!shared.name2) shared.name2 = name;
+  saveShared();
+  enterAs(person);
+}
+
+function enterAs(person) {
+  currentPerson = person;
+  sessionStorage.setItem('active-person', JSON.stringify(person));
+  document.getElementById('whoScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('active-user-name').textContent = person.name;
+  document.getElementById('n-from') && (document.getElementById('n-from').value = person.name);
+  initApp();
+}
+
+function switchUser() {
+  currentPerson = null;
+  sessionStorage.removeItem('active-person');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('who-name-form').style.display = 'none';
+  document.getElementById('new-person-name').value = '';
+  showWhoScreen();
+}
+
+// ===== INIT =====
+async function boot() {
+  await loadShared();
+  document.getElementById('loading').style.display = 'none';
+
+  // Try restoring session
+  try {
+    const saved = sessionStorage.getItem('active-person');
+    if (saved) {
+      const p = JSON.parse(saved);
+      const found = shared.persons.find(x => x.id === p.id);
+      if (found) { enterAs(found); return; }
     }
   } catch(e) {}
-  if (!data.dateIdeas || !data.dateIdeas.length) data.dateIdeas = [...DEFAULT_DATE_IDEAS];
+
+  showWhoScreen();
 }
 
-// ---- INIT ----
-load();
-document.getElementById('name1').value = data.name1;
-document.getElementById('name2').value = data.name2;
-document.getElementById('startDate').value = data.startDate;
-document.getElementById('n-from').value = data.name1 || '';
-updateCounter();
-renderAll();
-
-document.getElementById('name1').addEventListener('input', e => { data.name1 = e.target.value; save(); updateCounter(); updateVibeLabels(); });
-document.getElementById('name2').addEventListener('input', e => { data.name2 = e.target.value; save(); updateCounter(); updateVibeLabels(); });
-document.getElementById('startDate').addEventListener('input', e => { data.startDate = e.target.value; save(); updateCounter(); });
-
-function updateVibeLabels() {
-  document.getElementById('vibe-label-1').textContent = (data.name1 || 'Partner 1') + "'s vibes";
-  document.getElementById('vibe-label-2').textContent = (data.name2 || 'Partner 2') + "'s vibes";
+function initApp() {
+  document.getElementById('name1').value = shared.name1;
+  document.getElementById('name2').value = shared.name2;
+  document.getElementById('startDate').value = shared.startDate;
+  updateCounter();
+  renderAll();
+  // Poll for updates every 15s
+  setInterval(syncPoll, 15000);
 }
+
+async function syncPoll() {
+  try {
+    const r = await window.storage.get(STORE_KEY, true);
+    if (r && r.value) {
+      const d = JSON.parse(r.value);
+      Object.assign(shared, d);
+      renderAll();
+      updateCounter();
+    }
+  } catch(e) {}
+}
+
+// ===== COUPLE NAME / DATE INPUTS =====
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('name1').addEventListener('input', e => { shared.name1 = e.target.value; saveShared(); updateCounter(); updateVibeLabels(); });
+  document.getElementById('name2').addEventListener('input', e => { shared.name2 = e.target.value; saveShared(); updateCounter(); updateVibeLabels(); });
+  document.getElementById('startDate').addEventListener('input', e => {
+    shared.startDate = e.target.value; saveShared(); updateCounter();
+    if (e.target.value) {
+      const ex = shared.anniversaries.find(a => a.name === 'Our Anniversary');
+      if (ex) { ex.date = e.target.value; } else { shared.anniversaries.push({id:Date.now(),name:'Our Anniversary',date:e.target.value,by:''}); }
+      saveShared(); renderAnniversaries();
+    }
+  });
+});
 
 function updateCounter() {
-  updateVibeLabels();
   const el = document.getElementById('dayCounter');
-  if (!data.startDate) { el.style.display = 'none'; return; }
-  const start = new Date(data.startDate);
-  const now = new Date();
-  const days = Math.floor((now - start) / 86400000);
-  if (days < 0) { el.style.display = 'none'; return; }
+  if (!el) return;
+  if (!shared.startDate) { el.style.display='none'; return; }
+  const days = Math.max(0, Math.floor((new Date() - new Date(shared.startDate)) / 86400000));
   let txt = `${days.toLocaleString()} days together`;
-  if (data.name1 && data.name2) txt = `${data.name1} & ${data.name2} · ${txt}`;
-  el.textContent = txt;
-  el.style.display = 'inline-block';
+  if (shared.name1 && shared.name2) txt = `${shared.name1} & ${shared.name2} · ${txt}`;
+  el.textContent = txt; el.style.display = 'inline-block';
 }
 
-// ---- TABS ----
-function switchTab(id) {
+function updateVibeLabels() {
+  const l1 = document.getElementById('vibe-label-1');
+  const l2 = document.getElementById('vibe-label-2');
+  if (l1) l1.textContent = (shared.name1 || 'Partner 1') + "'s vibe";
+  if (l2) l2.textContent = (shared.name2 || 'Partner 2') + "'s vibe";
+}
+
+// ===== TABS =====
+function switchTab(id, el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+  el.classList.add('active');
   document.getElementById('panel-' + id).classList.add('active');
   if (id === 'stats') renderStats();
 }
 
-// ---- MEMORIES ----
+// ===== MEMORIES =====
 function addMemory() {
   const title = document.getElementById('m-title').value.trim();
-  const date = document.getElementById('m-date').value;
-  const desc = document.getElementById('m-desc').value.trim();
-  const cat = document.getElementById('m-cat').value;
-  const feel = document.getElementById('m-feel').value;
-  if (!title) { alert('Add a title for this memory ♡'); return; }
-  data.memories.unshift({ id: Date.now(), title, date, desc, cat, feel });
-  save();
-  renderMemories();
+  if (!title) { alert('Add a title ♡'); return; }
+  shared.memories.unshift({
+    id: Date.now(), title,
+    date: document.getElementById('m-date').value,
+    desc: document.getElementById('m-desc').value.trim(),
+    cat: document.getElementById('m-cat').value,
+    feel: document.getElementById('m-feel').value,
+    by: currentPerson ? currentPerson.name : ''
+  });
+  saveShared(); renderMemories();
   document.getElementById('m-title').value = '';
   document.getElementById('m-date').value = '';
   document.getElementById('m-desc').value = '';
 }
 
-function deleteMemory(id) {
-  data.memories = data.memories.filter(m => m.id !== id);
-  save(); renderMemories();
-}
+function deleteMemory(id) { shared.memories = shared.memories.filter(m => m.id !== id); saveShared(); renderMemories(); }
 
 function renderMemories() {
   const el = document.getElementById('memories-list');
-  if (!data.memories.length) {
-    el.innerHTML = '<div class="empty-state"><div class="big">✨</div>No memories yet.<br>Add your first one above!</div>'; return;
-  }
-  el.innerHTML = data.memories.map(m => `
+  if (!el) return;
+  if (!shared.memories.length) { el.innerHTML='<div class="empty-state"><div class="big">✨</div>No memories yet. Add your first one!</div>'; return; }
+  el.innerHTML = shared.memories.map(m => `
     <div class="memory-item">
       <div class="memory-emoji">${m.cat.split(' ')[0]}</div>
       <div class="memory-body">
         <div class="memory-title">${esc(m.title)}</div>
-        ${m.desc ? `<div class="memory-desc">${esc(m.desc)}</div>` : ''}
+        ${m.desc?`<div class="memory-desc">${esc(m.desc)}</div>`:''}
         <div class="memory-meta">
-          ${m.date ? `<span class="memory-date">${fmtDate(m.date)}</span>` : ''}
+          ${m.date?`<span class="memory-date">${fmtDate(m.date)}</span>`:''}
           <span class="tag">${m.cat}</span>
           <span class="tag">${m.feel}</span>
+          ${m.by?`<span class="added-by">by ${esc(m.by)}</span>`:''}
         </div>
       </div>
-      <button class="delete-btn" onclick="deleteMemory(${m.id})" title="Delete">✕</button>
-    </div>
-  `).join('');
+      <button class="delete-btn" onclick="deleteMemory(${m.id})">✕</button>
+    </div>`).join('');
 }
 
-// ---- ANNIVERSARIES ----
+// ===== ANNIVERSARIES =====
 function addAnniversary() {
   const name = document.getElementById('a-name').value.trim();
   const date = document.getElementById('a-date').value;
   if (!name || !date) { alert('Fill in name and date ♡'); return; }
-  data.anniversaries.push({ id: Date.now(), name, date });
-  save(); renderAnniversaries();
+  shared.anniversaries.push({id:Date.now(),name,date,by:currentPerson?currentPerson.name:''});
+  saveShared(); renderAnniversaries();
   document.getElementById('a-name').value = '';
   document.getElementById('a-date').value = '';
 }
 
-function deleteAnniversary(id) {
-  data.anniversaries = data.anniversaries.filter(a => a.id !== id);
-  save(); renderAnniversaries();
-}
+function deleteAnniversary(id) { shared.anniversaries = shared.anniversaries.filter(a=>a.id!==id); saveShared(); renderAnniversaries(); }
 
-function daysUntilNextOccurrence(dateStr) {
-  const [y, mo, d] = dateStr.split('-').map(Number);
+function daysUntil(dateStr) {
+  const [y,mo,d] = dateStr.split('-').map(Number);
   const today = new Date(); today.setHours(0,0,0,0);
-  let next = new Date(today.getFullYear(), mo-1, d);
-  if (next < today) next.setFullYear(today.getFullYear() + 1);
-  return Math.floor((next - today) / 86400000);
+  let next = new Date(today.getFullYear(),mo-1,d);
+  if (next < today) next.setFullYear(today.getFullYear()+1);
+  return Math.floor((next-today)/86400000);
 }
 
 function renderAnniversaries() {
   const el = document.getElementById('anniversaries-list');
-  if (!data.anniversaries.length) {
-    el.innerHTML = '<div class="empty-state"><div class="big">📅</div>No dates added yet.</div>'; return;
-  }
-  const sorted = [...data.anniversaries].sort((a,b) => daysUntilNextOccurrence(a.date) - daysUntilNextOccurrence(b.date));
+  if (!el) return;
+  if (!shared.anniversaries.length) { el.innerHTML='<div class="empty-state"><div class="big">📅</div>No dates added yet.</div>'; return; }
+  const sorted = [...shared.anniversaries].sort((a,b)=>daysUntil(a.date)-daysUntil(b.date));
   el.innerHTML = sorted.map(a => {
-    const days = daysUntilNextOccurrence(a.date);
-    const isToday = days === 0;
-    const isSoon = days <= 14 && !isToday;
-    return `
-      <div class="anni-item">
-        <div class="anni-countdown ${isToday ? 'anni-today' : isSoon ? 'anni-soon' : ''}">
-          <div class="anni-days ${isToday ? 'anni-days-today' : isSoon ? 'anni-days-soon' : ''}">${isToday ? '🎉' : days}</div>
-          <div class="anni-label ${isToday ? 'anni-label-today' : ''}">${isToday ? 'TODAY!' : days === 1 ? 'day' : 'days'}</div>
-        </div>
-        <div class="anni-body">
-          <div class="anni-name">${esc(a.name)}</div>
-          <div class="anni-date">${fmtDate(a.date)}</div>
-        </div>
-        <button class="delete-btn" onclick="deleteAnniversary(${a.id})">✕</button>
-      </div>`;
+    const days = daysUntil(a.date);
+    const isToday = days===0, isSoon = days<=14&&!isToday;
+    return `<div class="anni-item">
+      <div class="anni-countdown ${isToday?'anni-today':isSoon?'anni-soon':''}">
+        <div class="anni-days">${isToday?'🎉':days}</div>
+        <div class="anni-label">${isToday?'TODAY!':days===1?'day':'days'}</div>
+      </div>
+      <div class="anni-body">
+        <div class="anni-name">${esc(a.name)}</div>
+        <div class="anni-date">${fmtDate(a.date)}${a.by?` · <span style="color:var(--rose);font-size:0.72rem;">added by ${esc(a.by)}</span>`:''}</div>
+      </div>
+      <button class="delete-btn" onclick="deleteAnniversary(${a.id})">✕</button>
+    </div>`;
   }).join('');
 }
 
-// ---- DATE IDEAS ----
-let pickedIdea = null;
+// ===== DATE IDEAS =====
 function renderDateIdeas() {
   const el = document.getElementById('date-ideas-grid');
-  el.innerHTML = data.dateIdeas.map((d,i) => `
+  if (!el) return;
+  el.innerHTML = shared.dateIdeas.map((d,i)=>`
     <div class="date-idea" onclick="toggleDateIdea(${i})" id="di-${i}">
       <div class="di-emoji">${d.emoji}</div>
       <div class="di-name">${esc(d.name)}</div>
@@ -748,181 +668,119 @@ function renderDateIdeas() {
 }
 
 function toggleDateIdea(i) {
-  document.querySelectorAll('.date-idea').forEach(el => el.classList.remove('picked'));
-  document.getElementById('di-' + i).classList.add('picked');
-  pickedIdea = i;
+  document.querySelectorAll('.date-idea').forEach(e=>e.classList.remove('picked'));
+  document.getElementById('di-'+i)?.classList.add('picked');
 }
 
 function spinDateIdea() {
-  const idx = Math.floor(Math.random() * data.dateIdeas.length);
-  const idea = data.dateIdeas[idx];
+  const idx = Math.floor(Math.random()*shared.dateIdeas.length);
+  const idea = shared.dateIdeas[idx];
   document.getElementById('spin-result').innerHTML = `${idea.emoji} <span>${esc(idea.name)}</span> — ${esc(idea.desc)}`;
-  document.querySelectorAll('.date-idea').forEach(el => el.classList.remove('picked'));
-  document.getElementById('di-' + idx)?.classList.add('picked');
+  document.querySelectorAll('.date-idea').forEach(e=>e.classList.remove('picked'));
+  document.getElementById('di-'+idx)?.classList.add('picked');
 }
 
 function addDateIdea() {
   const name = document.getElementById('di-name').value.trim();
-  const emoji = document.getElementById('di-emoji').value.trim() || '🌟';
-  const desc = document.getElementById('di-desc').value.trim();
   if (!name) return;
-  data.dateIdeas.push({ name, emoji, desc: desc || 'A special evening' });
-  save(); renderDateIdeas();
-  document.getElementById('di-name').value = '';
-  document.getElementById('di-emoji').value = '';
-  document.getElementById('di-desc').value = '';
+  shared.dateIdeas.push({emoji:document.getElementById('di-emoji').value.trim()||'🌟',name,desc:document.getElementById('di-desc').value.trim()||'A special evening'});
+  saveShared(); renderDateIdeas();
+  document.getElementById('di-name').value='';
+  document.getElementById('di-emoji').value='';
+  document.getElementById('di-desc').value='';
 }
 
-// ---- LOVE NOTES ----
+// ===== LOVE NOTES =====
 let selectedMood = '';
 function selectMood(btn, mood) {
-  document.querySelectorAll('#mood-row .mood-btn').forEach(b => b.classList.remove('sel'));
-  btn.classList.add('sel');
-  selectedMood = mood;
+  document.querySelectorAll('#mood-row .mood-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel'); selectedMood = mood;
 }
 
 function addNote() {
-  const from = document.getElementById('n-from').value.trim() || 'Anonymous';
   const text = document.getElementById('n-text').value.trim();
   if (!text) { alert('Write something sweet ♡'); return; }
-  data.notes.unshift({ id: Date.now(), from, text, mood: selectedMood, ts: new Date().toLocaleDateString() });
-  save(); renderNotes();
-  document.getElementById('n-text').value = '';
-  selectedMood = '';
-  document.querySelectorAll('#mood-row .mood-btn').forEach(b => b.classList.remove('sel'));
+  shared.notes.unshift({
+    id: Date.now(),
+    from: currentPerson ? currentPerson.name : 'Anonymous',
+    text, mood: selectedMood,
+    ts: new Date().toLocaleDateString()
+  });
+  saveShared(); renderNotes();
+  document.getElementById('n-text').value='';
+  selectedMood='';
+  document.querySelectorAll('#mood-row .mood-btn').forEach(b=>b.classList.remove('sel'));
   burstConfetti();
 }
 
-function deleteNote(id) {
-  data.notes = data.notes.filter(n => n.id !== id);
-  save(); renderNotes();
-}
+function deleteNote(id) { shared.notes=shared.notes.filter(n=>n.id!==id); saveShared(); renderNotes(); }
 
 function renderNotes() {
   const el = document.getElementById('notes-list');
-  if (!data.notes.length) {
-    el.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="big">💌</div>No notes yet. Write something sweet!</div>'; return;
-  }
-  el.innerHTML = data.notes.map(n => `
+  if (!el) return;
+  if (!shared.notes.length) { el.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="big">💌</div>No notes yet!</div>'; return; }
+  el.innerHTML = shared.notes.map(n=>`
     <div class="note-card">
       <button class="note-del" onclick="deleteNote(${n.id})">✕</button>
-      <div class="note-from">${esc(n.from)}${n.mood ? ' · ' + n.mood : ''}</div>
+      <div class="note-from">${esc(n.from)}${n.mood?' · '+n.mood:''}</div>
       <div class="note-text">"${esc(n.text)}"</div>
       <div class="note-ts">${n.ts}</div>
     </div>`).join('');
 }
 
-// ---- STATS ----
+// ===== STATS =====
 function renderStats() {
   updateVibeLabels();
-  const days = data.startDate ? Math.max(0, Math.floor((new Date() - new Date(data.startDate)) / 86400000)) : 0;
-  const grid = document.getElementById('stats-grid');
-  grid.innerHTML = [
-    { num: days.toLocaleString(), label: 'Days Together' },
-    { num: Math.floor(days/7).toLocaleString(), label: 'Weeks' },
-    { num: data.memories.length, label: 'Memories' },
-    { num: data.notes.length, label: 'Love Notes' },
-    { num: data.anniversaries.length, label: 'Special Dates' },
-    { num: data.dateIdeas.length, label: 'Date Ideas' },
-  ].map(s => `<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('');
+  const days = shared.startDate ? Math.max(0,Math.floor((new Date()-new Date(shared.startDate))/86400000)) : 0;
+  document.getElementById('stats-grid').innerHTML = [
+    {num:days.toLocaleString(),label:'Days Together'},
+    {num:Math.floor(days/7).toLocaleString(),label:'Weeks'},
+    {num:shared.memories.length,label:'Memories'},
+    {num:shared.notes.length,label:'Love Notes'},
+    {num:shared.anniversaries.length,label:'Special Dates'},
+    {num:shared.dateIdeas.length,label:'Date Ideas'},
+  ].map(s=>`<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('');
 }
 
-// ---- VIBE CHECK ----
-let vibes = { 1: '', 2: '' };
+// ===== VIBE CHECK =====
+let vibes = {1:'',2:''};
 function setVibe(n, btn, mood) {
-  const parent = btn.closest('.card-row > div');
-  parent.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('sel'));
-  btn.classList.add('sel');
-  vibes[n] = mood;
-  checkVibes();
+  btn.closest('.card-row > div').querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel'); vibes[n]=mood; checkVibes();
 }
-
 function checkVibes() {
-  if (!vibes[1] || !vibes[2]) return;
+  if (!vibes[1]||!vibes[2]) return;
   const combos = {
-    '🔥 On fire+🔥 On fire': '🔥 You two are absolutely electric right now!',
-    '💕 Loving+💕 Loving': '💕 Pure sweetness — a perfect harmony.',
-    '🔥 On fire+💕 Loving': '✨ One brings fire, one brings warmth — a beautiful mix.',
-    '💕 Loving+🔥 On fire': '✨ Perfect balance of warmth and passion.',
-    '😊 Good+😊 Good': '😊 Steady and solid — the foundation of everything great.',
-    '😔 Meh+😔 Meh': '🌱 Everyone has quiet days. A little quality time might help.',
-    'default': '💖 Different moods, same love. Check in with each other today ♡'
+    '🔥 On fire+🔥 On fire':'🔥 You two are absolutely electric right now!',
+    '💕 Loving+💕 Loving':'💕 Pure sweetness — a perfect harmony.',
+    '🔥 On fire+💕 Loving':'✨ One brings fire, one brings warmth — beautiful.',
+    '💕 Loving+🔥 On fire':'✨ Perfect balance of warmth and passion.',
+    '😊 Good+😊 Good':'😊 Steady and solid — the foundation of everything great.',
+    '😔 Meh+😔 Meh':'🌱 Everyone has quiet days. A little quality time might help.',
   };
-  const key = vibes[1] + '+' + vibes[2];
-  document.getElementById('vibe-result').textContent = combos[key] || combos['default'];
+  document.getElementById('vibe-result').textContent = combos[vibes[1]+'+'+vibes[2]] || '💖 Different moods, same love. Check in with each other today ♡';
 }
 
-// ---- CONFETTI ----
+// ===== CONFETTI =====
 function burstConfetti() {
   const canvas = document.createElement('canvas');
-  canvas.className = 'confetti';
-  document.body.appendChild(canvas);
+  canvas.className='confetti'; document.body.appendChild(canvas);
   const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const particles = Array.from({length: 60}, () => ({
-    x: Math.random() * canvas.width,
-    y: -10, vx: (Math.random()-0.5)*3,
-    vy: Math.random()*4+2,
-    r: Math.random()*6+3,
-    color: ['#c8687a','#f5dde2','#c9a85c','#f7eedd','#8c3a4a'][Math.floor(Math.random()*5)],
-    rot: Math.random()*360, vr: (Math.random()-0.5)*6
-  }));
-  let frame = 0;
-  function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
-      ctx.fillStyle = p.color; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r);
-      ctx.restore();
-    });
-    frame++;
-    if (frame < 80) requestAnimationFrame(animate);
-    else canvas.remove();
-  }
-  animate();
+  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  const ps = Array.from({length:60},()=>({x:Math.random()*canvas.width,y:-10,vx:(Math.random()-0.5)*3,vy:Math.random()*4+2,r:Math.random()*6+3,color:['#c8687a','#f5dde2','#c9a85c','#f7eedd','#8c3a4a'][Math.floor(Math.random()*5)],rot:Math.random()*360,vr:(Math.random()-0.5)*6}));
+  let f=0;
+  function anim(){ctx.clearRect(0,0,canvas.width,canvas.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r);ctx.restore();});if(++f<80)requestAnimationFrame(anim);else canvas.remove();}
+  anim();
 }
 
-// ---- HELPERS ----
-function esc(s) {
-  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function fmtDate(d) {
-  if (!d) return '';
-  const [y,m,day] = d.split('-');
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${months[parseInt(m,10)-1]} ${parseInt(day,10)}, ${y}`;
-}
+// ===== HELPERS =====
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmtDate(d){if(!d)return'';const[y,m,day]=d.split('-');const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return`${mo[parseInt(m,10)-1]} ${parseInt(day,10)}, ${y}`;}
 
-function renderAll() {
-  renderMemories();
-  renderAnniversaries();
-  renderDateIdeas();
-  renderNotes();
-  updateVibeLabels();
-}
+function renderAll(){renderMemories();renderAnniversaries();renderDateIdeas();renderNotes();updateVibeLabels();}
 
-// Auto-add relationship anniversary if start date is set
-window.addEventListener('load', () => {
-  if (data.startDate && !data.anniversaries.find(a => a.name === 'Our Anniversary')) {
-    const exists = data.anniversaries.find(a => a.date === data.startDate);
-    if (!exists) {
-      data.anniversaries.push({ id: Date.now(), name: 'Our Anniversary', date: data.startDate });
-      save(); renderAnniversaries();
-    }
-  }
-});
-
-document.getElementById('startDate').addEventListener('change', e => {
-  const d = e.target.value;
-  if (d) {
-    const exists = data.anniversaries.find(a => a.name === 'Our Anniversary');
-    if (exists) { exists.date = d; }
-    else { data.anniversaries.push({ id: Date.now(), name: 'Our Anniversary', date: d }); }
-    save(); renderAnniversaries();
-  }
-});
+// ===== BOOT =====
+boot();
 </script>
 </body>
 </html>
