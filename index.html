@@ -691,16 +691,36 @@ async function boot(){
   shared=cached?{...initShared(),...cached}:initShared();
   if(!shared.dateIdeas||!shared.dateIdeas.length)shared.dateIdeas=[...DEFAULT_IDEAS];
 
-  if(!cfg){document.getElementById('loading').style.display='none';document.getElementById('setupScreen').style.display='flex';return;}
-
-  document.getElementById('loading-text').textContent='Syncing with your partner…';
-  try{const r=await jbRead();if(r&&typeof r==='object'){shared={...initShared(),...r};if(!shared.dateIdeas||!shared.dateIdeas.length)shared.dateIdeas=[...DEFAULT_IDEAS];lsSet(DATA_KEY,shared);}}
-  catch(e){}
-
+  // Show UI instantly from cache
   document.getElementById('loading').style.display='none';
+
+  if(!cfg){document.getElementById('setupScreen').style.display='flex';return;}
+
+  // Restore session immediately
   const savedMe=lsGet(ME_KEY);
-  if(savedMe&&shared.persons&&shared.persons.find(p=>p.id===savedMe.id)){enterAs(savedMe);return;}
+  if(savedMe&&shared.persons&&shared.persons.find(p=>p.id===savedMe.id)){
+    enterAs(savedMe);
+    bgSync();
+    return;
+  }
   showWhoScreen();
+  bgSync();
+}
+
+// Sync in background without blocking UI
+async function bgSync(){
+  if(!cfg)return;
+  ss('busy','Syncing…');
+  try{
+    const r=await jbRead();
+    if(r&&typeof r==='object'){
+      shared={...initShared(),...r};
+      if(!shared.dateIdeas||!shared.dateIdeas.length)shared.dateIdeas=[...DEFAULT_IDEAS];
+      lsSet(DATA_KEY,shared);
+      renderAll();updateCounter();
+      ss('ok','Synced ✓');
+    }
+  }catch(e){ss(null,'Offline — using local data');}
 }
 
 async function saveConfig(){
