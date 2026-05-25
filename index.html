@@ -127,6 +127,9 @@
   .anni-soon{background:var(--gold-light);}
   .anni-today{background:var(--rose);}
   .anni-today .anni-days,.anni-today .anni-lbl{color:white;}
+  .anni-past{background:var(--blush);}
+  .anni-past .anni-days{color:var(--ink-soft);}
+  .anni-past .anni-lbl{color:var(--ink-soft);}
 
   .date-idea-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:0.75rem;margin-bottom:1.3rem;}
   .date-idea{background:white;border:1.5px solid var(--border);border-radius:14px;padding:0.9rem;cursor:pointer;text-align:center;transition:all 0.2s;user-select:none;}
@@ -699,21 +702,33 @@ function addAnniversary(){
   document.getElementById('a-name').value=''; document.getElementById('a-date').value='';
 }
 function delAnniversary(id){shared.anniversaries=shared.anniversaries.filter(a=>a.id!==id);save();renderAnniversaries();}
-function daysUntil(ds){
-  const[y,mo,d]=ds.split('-').map(Number),today=new Date();today.setHours(0,0,0,0);
-  let next=new Date(today.getFullYear(),mo-1,d);
-  if(next<today) next.setFullYear(today.getFullYear()+1);
-  return Math.floor((next-today)/86400000);
+// Returns days difference: negative = past, 0 = today, positive = future
+// Uses the exact date including year (no rolling forward)
+function daysDiff(ds){
+  const[y,mo,d]=ds.split('-').map(Number);
+  const today=new Date();today.setHours(0,0,0,0);
+  const target=new Date(y,mo-1,d);
+  return Math.floor((target-today)/86400000);
+}
+// For sorting: upcoming dates first (ascending), then past dates (most recent first)
+function sortKey(ds){
+  const diff=daysDiff(ds);
+  return diff>=0 ? diff : 100000+Math.abs(diff);
 }
 function renderAnniversaries(){
   const el=document.getElementById('anniversaries-list');if(!el)return;
   if(!shared.anniversaries||!shared.anniversaries.length){el.innerHTML='<div class="empty-state"><div class="big">📅</div>No dates yet.</div>';return;}
-  el.innerHTML=[...shared.anniversaries].sort((a,b)=>daysUntil(a.date)-daysUntil(b.date)).map(a=>{
-    const days=daysUntil(a.date),isToday=days===0,isSoon=days<=14&&!isToday;
+  el.innerHTML=[...shared.anniversaries].sort((a,b)=>sortKey(a.date)-sortKey(b.date)).map(a=>{
+    const diff=daysDiff(a.date);
+    const isToday=diff===0,isPast=diff<0,isSoon=diff>0&&diff<=14;
+    const absDays=Math.abs(diff);
+    let countdownClass=isPast?'anni-past':isSoon?'anni-soon':'';
+    let daysLabel=isToday?'🎉':absDays.toLocaleString();
+    let subLabel=isToday?'TODAY!':isPast?(absDays===1?'day ago':'days ago'):(diff===1?'day left':'days left');
     return`<div class="anni-item">
-      <div class="anni-countdown ${isToday?'anni-today':isSoon?'anni-soon':''}">
-        <div class="anni-days">${isToday?'🎉':days}</div>
-        <div class="anni-lbl">${isToday?'TODAY!':days===1?'day':'days'}</div>
+      <div class="anni-countdown ${isToday?'anni-today':isSoon?'anni-soon':isPast?'anni-past':''}">
+        <div class="anni-days">${daysLabel}</div>
+        <div class="anni-lbl">${subLabel}</div>
       </div>
       <div class="anni-body">
         <div class="anni-name">${x(a.name)}</div>
