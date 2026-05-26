@@ -10,8 +10,6 @@
 :root{--rose:#c8687a;--rose-light:#f5dde2;--rose-deep:#8c3a4a;--blush:#fdf0f2;--cream:#fdf8f5;--ink:#2a1a1f;--ink-soft:#6b4a52;--gold:#c9a85c;--gold-light:#f7eedd;--border:rgba(200,104,122,0.18);--shadow:0 4px 24px rgba(140,58,74,0.08);}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
-
-/* ── SETUP ── */
 .setup-screen{position:fixed;inset:0;background:linear-gradient(160deg,#f5dde2,#fdf0f2 50%,#f7eedd);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2000;padding:1.5rem;overflow-y:auto;}
 .setup-box{background:white;border:1px solid var(--border);border-radius:20px;padding:2rem;max-width:540px;width:100%;box-shadow:var(--shadow);}
 .setup-box h2{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--rose-deep);margin-bottom:0.25rem;}
@@ -30,8 +28,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .setup-inputs input::placeholder{color:#bbb;}
 .setup-err{color:#c0392b;font-size:0.8rem;margin-top:0.4rem;display:none;background:#fdf0f0;padding:8px 12px;border-radius:8px;border:1px solid rgba(192,57,43,0.2);}
 .setup-note{font-size:0.75rem;color:#bbb;margin-top:1rem;line-height:1.5;}
-
-/* ── WHO ── */
 .who-screen{position:fixed;inset:0;background:linear-gradient(160deg,#f5dde2,#fdf0f2 50%,#f7eedd);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;padding:2rem;}
 .who-screen h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--rose-deep);margin-bottom:0.4rem;}
 .who-screen p{color:var(--ink-soft);font-size:0.9rem;margin-bottom:2rem;text-align:center;max-width:300px;}
@@ -41,8 +37,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .who-name-form{margin-top:1.8rem;text-align:center;display:none;}
 .who-name-form p{color:var(--ink-soft);font-size:0.85rem;margin-bottom:0.8rem;}
 .who-name-form input{font-family:'Playfair Display',serif;font-size:1rem;border:none;border-bottom:2px solid var(--rose);background:transparent;color:var(--rose-deep);text-align:center;padding:6px 10px;outline:none;width:180px;}
-
-/* ── HERO ── */
 .hero{background:linear-gradient(160deg,#f5dde2 0%,#fdf0f2 50%,#f7eedd 100%);border-bottom:1px solid var(--border);padding:1.8rem 2rem 1.4rem;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'♡';position:absolute;font-size:180px;opacity:0.05;top:-30px;right:-20px;color:var(--rose);pointer-events:none;}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.5rem);color:var(--rose-deep);letter-spacing:-0.02em;line-height:1.1;}
@@ -56,8 +50,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .counter-pill{display:inline-block;background:var(--rose);color:white;border-radius:999px;padding:3px 14px;font-size:0.78rem;font-weight:500;margin-top:0.5rem;}
 .active-badge{position:absolute;top:12px;right:14px;background:white;border:1.5px solid var(--rose);border-radius:999px;padding:4px 14px;font-size:0.78rem;font-weight:500;color:var(--rose-deep);display:flex;align-items:center;gap:6px;cursor:pointer;}
 .active-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--rose);}
-
-/* ── SYNC BAR ── */
 .sync-bar{background:white;border-bottom:1px solid var(--border);padding:4px 1.5rem;display:flex;align-items:center;justify-content:space-between;font-size:0.73rem;color:var(--ink-soft);}
 .sync-right{display:flex;align-items:center;gap:7px;}
 .sync-dot{width:6px;height:6px;border-radius:50%;background:#aaa;flex-shrink:0;}
@@ -65,13 +57,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
 .reset-btn{font-size:0.7rem;color:var(--ink-soft);background:none;border:none;cursor:pointer;text-decoration:underline;opacity:0.6;}
 .reset-btn:hover{opacity:1;color:var(--rose);}
-
-/* ── TABS ── */
 .tabs{display:flex;padding:0 1rem;border-bottom:1.5px solid var(--border);background:white;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .tab{padding:0.8rem 1rem;font-size:0.82rem;font-weight:500;color:var(--ink-soft);cursor:pointer;border-bottom:2.5px solid transparent;white-space:nowrap;transition:all 0.2s;user-select:none;}
 .tab:hover{color:var(--rose);}.tab.active{color:var(--rose-deep);border-bottom-color:var(--rose);}
-
-/* ── PANELS ── */
 .panels{padding:1.3rem;max-width:900px;margin:0 auto;}
 .panel{display:none;animation:fadeIn 0.3s ease;}.panel.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -96,8 +84,6 @@ textarea{resize:vertical;min-height:75px;}
 .mood-row{display:flex;gap:6px;flex-wrap:wrap;margin:0.3rem 0 0.8rem;}
 .mood-btn{background:var(--blush);border:1.5px solid var(--border);border-radius:999px;padding:5px 11px;font-size:0.8rem;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;color:var(--ink);}
 .mood-btn:hover,.mood-btn.sel{background:var(--rose-light);border-color:var(--rose);color:var(--rose-deep);font-weight:500;}
-
-/* ── MEMORY ── */
 .memory-item{background:white;border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;margin-bottom:0.65rem;box-shadow:0 2px 12px rgba(140,58,74,0.05);display:flex;gap:0.85rem;align-items:flex-start;}
 .memory-emoji{font-size:1.5rem;min-width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--rose-light);border-radius:10px;flex-shrink:0;}
 .memory-thumb{width:40px;height:40px;border-radius:10px;object-fit:cover;flex-shrink:0;}
@@ -105,8 +91,6 @@ textarea{resize:vertical;min-height:75px;}
 .memory-desc{font-size:0.82rem;color:var(--ink-soft);margin-bottom:4px;line-height:1.5;}
 .memory-meta{display:flex;gap:7px;align-items:center;flex-wrap:wrap;}
 .memory-date-lbl{font-size:0.74rem;color:var(--rose);font-weight:500;}
-
-/* ── ANNIVERSARIES ── */
 .anni-item{background:white;border:1px solid var(--border);border-radius:14px;padding:0.9rem 1.2rem;margin-bottom:0.65rem;display:flex;align-items:center;gap:0.9rem;box-shadow:0 2px 12px rgba(140,58,74,0.04);}
 .anni-countdown{text-align:center;background:var(--rose-light);border-radius:12px;padding:0.45rem 0.8rem;min-width:64px;flex-shrink:0;}
 .anni-days{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--rose-deep);line-height:1;}
@@ -116,8 +100,6 @@ textarea{resize:vertical;min-height:75px;}
 .anni-soon .anni-days{color:var(--gold);}.anni-soon{background:var(--gold-light);}
 .anni-today{background:var(--rose);}.anni-today .anni-days,.anni-today .anni-lbl{color:white;}
 .anni-past{background:var(--blush);}.anni-past .anni-days,.anni-past .anni-lbl{color:var(--ink-soft);}
-
-/* ── DATE IDEAS ── */
 .date-idea-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:0.65rem;margin-bottom:1.2rem;}
 .date-idea{background:white;border:1.5px solid var(--border);border-radius:13px;padding:0.85rem;cursor:pointer;text-align:center;transition:all 0.2s;user-select:none;}
 .date-idea:hover,.date-idea.picked{border-color:var(--rose);background:var(--rose-light);}
@@ -125,8 +107,6 @@ textarea{resize:vertical;min-height:75px;}
 .spin-area{background:white;border:1px solid var(--border);border-radius:16px;padding:1.2rem;text-align:center;box-shadow:var(--shadow);}
 .spin-result{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--rose-deep);margin:0.7rem 0;min-height:1.9rem;}
 .spin-result span{font-style:italic;}
-
-/* ── NOTES ── */
 .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;}
 @media(max-width:560px){.notes-grid{grid-template-columns:1fr}}
 .note-card{background:white;border:1px solid var(--border);border-radius:14px;padding:1rem;box-shadow:var(--shadow);position:relative;}
@@ -135,33 +115,23 @@ textarea{resize:vertical;min-height:75px;}
 .note-ts{font-size:0.69rem;color:#ccc;margin-top:7px;}
 .note-del{position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;color:#ddd;font-size:0.87rem;}
 .note-del:hover{color:var(--rose);}
-
-/* ── STATS ── */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.85rem;margin-bottom:1.2rem;}
 .stat-card{background:white;border:1px solid var(--border);border-radius:14px;padding:1rem;text-align:center;box-shadow:var(--shadow);}
 .stat-num{font-family:'Playfair Display',serif;font-size:1.75rem;color:var(--rose-deep);line-height:1;}
 .stat-label{font-size:0.74rem;color:var(--ink-soft);margin-top:4px;}
-
-/* ── BUCKET ── */
 .bucket-item{background:white;border:1px solid var(--border);border-radius:13px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.9rem;box-shadow:0 2px 12px rgba(140,58,74,0.04);}
 .bucket-item.done{opacity:0.55;}
 .bucket-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--rose);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;background:white;}
 .bucket-check.ticked{background:var(--rose);border-color:var(--rose);color:white;font-size:0.75rem;}
 .bucket-text{flex:1;font-size:0.93rem;}.bucket-text.done-txt{text-decoration:line-through;color:var(--ink-soft);}
-
-/* ── PLAYLIST ── */
 .song-item{background:white;border:1px solid var(--border);border-radius:13px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.9rem;}
 .song-icon{width:40px;height:40px;background:var(--rose-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
 .song-body{flex:1;min-width:0;}.song-title{font-weight:500;font-size:0.93rem;}
 .song-artist{font-size:0.78rem;color:var(--ink-soft);}.song-note{font-size:0.78rem;color:var(--rose);font-style:italic;margin-top:2px;}
-
-/* ── PLACES ── */
 .place-item{background:white;border:1px solid var(--border);border-radius:13px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;display:flex;align-items:flex-start;gap:0.9rem;}
 .place-pin{font-size:1.5rem;flex-shrink:0;}.place-body{flex:1;}
 .place-name{font-weight:500;font-size:0.93rem;}.place-desc{font-size:0.8rem;color:var(--ink-soft);margin-top:2px;}
 .place-cat-tag{font-size:0.68rem;background:var(--gold-light);color:var(--gold);padding:2px 8px;border-radius:999px;font-weight:500;border:1px solid rgba(201,168,92,0.3);}
-
-/* ── DEBATE ── */
 .debate-item{background:white;border:1px solid var(--border);border-radius:13px;padding:1rem 1.2rem;margin-bottom:0.65rem;}
 .debate-topic{font-weight:500;font-size:0.95rem;margin-bottom:8px;}
 .debate-sides{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
@@ -170,8 +140,6 @@ textarea{resize:vertical;min-height:75px;}
 .debate-side.b{background:var(--gold-light);border:1px solid rgba(201,168,92,0.2);}
 .debate-side-name{font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;}
 .debate-side.a .debate-side-name{color:var(--rose-deep);}.debate-side.b .debate-side-name{color:#7a5c00;}
-
-/* ── COUNTERS ── */
 .counters-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.85rem;margin-bottom:1.2rem;}
 .counter-card{background:white;border:1px solid var(--border);border-radius:14px;padding:1rem;text-align:center;box-shadow:var(--shadow);}
 .counter-val{font-family:'Playfair Display',serif;font-size:2rem;color:var(--rose-deep);line-height:1;margin-bottom:4px;}
@@ -179,35 +147,25 @@ textarea{resize:vertical;min-height:75px;}
 .counter-btns{display:flex;gap:6px;justify-content:center;}
 .counter-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--rose);background:white;color:var(--rose-deep);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-weight:600;}
 .counter-btn:hover{background:var(--rose);color:white;}
-
-/* ── GRATITUDE ── */
 .jar-item{background:white;border:1px solid var(--border);border-radius:13px;padding:0.9rem 1.1rem;margin-bottom:0.6rem;display:flex;gap:0.8rem;align-items:flex-start;}
 .jar-heart{font-size:1.3rem;flex-shrink:0;}.jar-body{flex:1;}
 .jar-text{font-family:'Playfair Display',serif;font-style:italic;font-size:0.9rem;line-height:1.5;}
 .jar-from{font-size:0.7rem;color:var(--rose);margin-top:4px;font-weight:500;}
-
-/* ── MORNING ── */
 .morning-card{background:linear-gradient(135deg,#fdf0f2,#f7eedd);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center;margin-bottom:1rem;box-shadow:var(--shadow);}
 .morning-card .sun{font-size:2.5rem;margin-bottom:0.5rem;}
 .morning-msg-text{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--rose-deep);line-height:1.6;margin-bottom:0.5rem;}
 .morning-from{font-size:0.78rem;color:var(--ink-soft);}
-
-/* ── QUIZ ── */
 .quiz-card{background:white;border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:0.85rem;box-shadow:var(--shadow);}
 .quiz-q{font-weight:500;font-size:0.95rem;margin-bottom:0.7rem;color:var(--rose-deep);}
 .quiz-answers{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;}
 .quiz-answer{background:var(--blush);border:1px solid var(--border);border-radius:10px;padding:0.6rem 0.8rem;font-size:0.83rem;}
 .quiz-answer-name{font-size:0.68rem;font-weight:600;color:var(--rose);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px;}
-
-/* ── CAPSULE ── */
 .capsule-item{background:white;border:1px solid var(--border);border-radius:13px;padding:0.9rem 1.2rem;margin-bottom:0.65rem;display:flex;align-items:center;gap:0.9rem;}
 .capsule-lock{font-size:1.5rem;flex-shrink:0;}.capsule-body{flex:1;}
 .capsule-name{font-weight:500;font-size:0.93rem;}
 .capsule-open-date{font-size:0.78rem;color:var(--ink-soft);margin-top:2px;}
 .capsule-revealed{font-family:'Playfair Display',serif;font-style:italic;font-size:0.88rem;color:var(--rose-deep);margin-top:5px;}
 .capsule-locked-msg{font-size:0.78rem;color:var(--ink-soft);font-style:italic;}
-
-/* ── LOADING ── */
 .loading-overlay{position:fixed;inset:0;background:rgba(253,248,245,0.94);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3000;}
 .loading-heart{font-size:2.5rem;animation:hb 0.8s infinite;}
 @keyframes hb{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
@@ -218,45 +176,44 @@ textarea{resize:vertical;min-height:75px;}
 </head>
 <body>
 
-<!-- LOADING -->
 <div class="loading-overlay" id="loading">
   <div class="loading-heart">♡</div>
   <div class="loading-text">Loading your story…</div>
 </div>
 
-<!-- ══ SETUP SCREEN ══ -->
+<!-- ══ SETUP ══ -->
 <div class="setup-screen" id="setupScreen" style="display:none;">
   <div class="setup-box">
     <h2>Set up sync ♡</h2>
-    <p class="sub">Takes about 2 minutes. Free forever. Both of you use the exact same API key and URL.</p>
+    <p class="sub">Takes about 2 minutes. Free forever. Both of you enter the exact same Master Key and Bin ID.</p>
 
     <div class="step">
       <div class="step-num">1</div>
-      <div class="step-text">Go to <a href="https://app.jsonstorage.net" target="_blank">app.jsonstorage.net</a> and click <strong>Sign Up</strong> — use any email, it's free.</div>
+      <div class="step-text">Go to <a href="https://jsonbin.io" target="_blank">jsonbin.io</a> and click <strong>Sign Up</strong> — it's completely free.</div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-text">After logging in, click <strong>API Key</strong> in the top-right menu. Copy the long key shown — it looks like <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</div>
+      <div class="step-text">After logging in, click your avatar (top-right) → <strong>API Keys</strong>. Copy your <strong>Master Key</strong> — it looks like <code>$2a$10$…</code></div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-text">Click <strong>New Item</strong> → leave the content as <code>{}</code> → click <strong>Save</strong>. It will create an item and show you a URL like <code>https://api.jsonstorage.net/v1/json/abc123/def456</code>. Copy that full URL.</div>
+      <div class="step-text">Click <strong>CREATE BIN</strong> on the dashboard. Leave the content as <code>{}</code>, give it any name, and click <strong>Create</strong>. Copy the <strong>Bin ID</strong> shown (e.g. <code>64a1f3c...</code>).</div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <div class="step-text">Paste both below and hit <strong>Connect</strong>. Share these same two values with your partner — they paste them on their device too.</div>
+      <div class="step-text">Paste both values below and hit <strong>Connect</strong>. Share these same two values with your partner — they paste them on their device too.</div>
     </div>
 
     <hr class="setup-divider">
 
     <div class="setup-inputs">
       <div>
-        <label>API Key</label>
-        <input type="text" id="cfg-apikey" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+        <label>Master Key</label>
+        <input type="text" id="cfg-apikey" placeholder="$2a$10$xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
       </div>
       <div>
-        <label>Item URL</label>
-        <input type="text" id="cfg-url" placeholder="https://api.jsonstorage.net/v1/json/abc/def" autocomplete="off" spellcheck="false">
+        <label>Bin ID</label>
+        <input type="text" id="cfg-binid" placeholder="64a1f3c8dxxxxxxxxxxxxxxx" autocomplete="off" spellcheck="false">
       </div>
       <div id="setup-err" class="setup-err"></div>
     </div>
@@ -265,7 +222,7 @@ textarea{resize:vertical;min-height:75px;}
       <button class="btn" id="setup-save-btn" onclick="saveConfig()">Connect & Save ♡</button>
       <button class="btn" style="background:var(--ink-soft);" onclick="skipSetup()">Use local only</button>
     </div>
-    <p class="setup-note">Your data is stored in your own private jsonstorage.net account. Nobody else can access it. The free tier allows 1,000 requests/month which is plenty for 2 people.</p>
+    <p class="setup-note">Your data lives in your own private jsonbin.io account. The free tier allows 10,000 requests/month — plenty for 2 people. Both partners must use the same Master Key and Bin ID.</p>
   </div>
 </div>
 
@@ -321,7 +278,6 @@ textarea{resize:vertical;min-height:75px;}
   </div>
 
   <div class="panels">
-
     <div class="panel active" id="panel-memories">
       <div class="section-title"><span>✨</span> Our Memories</div>
       <div class="card">
@@ -554,16 +510,19 @@ textarea{resize:vertical;min-height:75px;}
         <div id="vibe-result" style="margin-top:0.9rem;text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:var(--rose-deep);font-size:0.97rem;"></div>
       </div>
     </div>
-
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════
-//  CONFIG & CONSTANTS
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
+//  CONSTANTS
+// ═══════════════════════════════════════
 const CFG_KEY='lt-cfg', DATA_KEY='lt-data', ME_KEY='lt-me';
-const JS_BASE='https://api.jsonstorage.net/v1/json';
+// cfg shape: { apiKey, binId }
+// jsonbin.io endpoints:
+//   GET  https://api.jsonbin.io/v3/b/:binId/latest   → { record: {...} }
+//   PUT  https://api.jsonbin.io/v3/b/:binId           → body = data, returns { record: {...} }
+const JB_BASE='https://api.jsonbin.io/v3/b';
 
 const DEFAULT_IDEAS=[
   {emoji:'🍳',name:'Cook Together',desc:'Try a new recipe at home'},{emoji:'🎬',name:'Movie Night',desc:'Blanket fort & popcorn'},
@@ -584,9 +543,9 @@ const DEFAULT_IDEAS=[
 ];
 const QUIZ_PROMPTS=["What's my comfort food?","What's my biggest fear?","What's my dream holiday destination?","What song always reminds you of me?","What's my go-to coffee order?","What's something I do that makes you laugh?","What's my favourite season?","What's a small thing I do that means a lot?","What would I do on a perfect lazy Sunday?","What's my love language?","What's my favourite childhood memory?","What habit of mine do you love but also drives you crazy?"];
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  STATE
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 let cfg=null, shared=null, me=null;
 let selectedMood='', moodLogSel={emoji:'',label:''}, vibes={1:'',2:''};
 let pollTimer=null, saveDebounce=null;
@@ -597,37 +556,42 @@ function initShared(){
     debates:[],counters:[],gratitude:[],morningMsg:{},quiz:[],capsules:[],moodLog:[]};
 }
 
-// ═══════════════════════════════════════════════════
-//  STORAGE HELPERS
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════
 function lsGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 function x(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function fd(d){if(!d)return'';const[y,m,day]=d.split('-');return['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][parseInt(m)-1]+' '+parseInt(day)+', '+y;}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 
-// ═══════════════════════════════════════════════════
-//  JSONSTORAGE.NET API
-//  GET  /v1/json/{userId}/{itemId}
-//  PUT  /v1/json/{userId}/{itemId}?apiKey={key}
-// ═══════════════════════════════════════════════════
-async function jsRead(){
-  const r=await fetch(cfg.url,{headers:{'Content-Type':'application/json'}});
+// ═══════════════════════════════════════
+//  JSONBIN.IO API
+//  Headers always need X-Master-Key.
+//  Read returns { record: {...} }
+//  Write body is the data object directly.
+// ═══════════════════════════════════════
+async function jbRead(){
+  const r=await fetch(`${JB_BASE}/${cfg.binId}/latest`,{
+    headers:{'X-Master-Key':cfg.apiKey}
+  });
   if(!r.ok) throw new Error('Read failed: '+r.status);
-  return await r.json();
+  const json=await r.json();
+  return json.record; // actual data lives inside .record
 }
-async function jsWrite(data){
-  const r=await fetch(cfg.url+'?apiKey='+encodeURIComponent(cfg.apiKey),{
+
+async function jbWrite(data){
+  const r=await fetch(`${JB_BASE}/${cfg.binId}`,{
     method:'PUT',
-    headers:{'Content-Type':'application/json'},
+    headers:{'X-Master-Key':cfg.apiKey,'Content-Type':'application/json'},
     body:JSON.stringify(data)
   });
   if(!r.ok) throw new Error('Write failed: '+r.status);
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  SYNC STATE UI
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function ss(state,msg){
   const dot=document.getElementById('syncDot'),txt=document.getElementById('syncText');
   if(!dot)return; dot.className='sync-dot';
@@ -637,119 +601,118 @@ function ss(state,msg){
   else txt.textContent=msg||'Local only';
 }
 
-// Debounced save — waits 800ms after last change before writing to API
+// Debounced save — waits 800 ms after last change
 async function save(){
   lsSet(DATA_KEY,shared);
   if(!cfg){ss(null,'Local only');return;}
   clearTimeout(saveDebounce);
   saveDebounce=setTimeout(async()=>{
     ss('busy');
-    try{await jsWrite(shared);ss('ok');}
-    catch(e){ss('err','Save failed — will retry');setTimeout(save,5000);}
+    try{await jbWrite(shared);ss('ok');}
+    catch(e){ss('err','Save failed — retrying');setTimeout(save,5000);}
   },800);
 }
 
-// Poll every 30s for partner's changes
+// Poll every 30 s for partner changes
 function startPoll(){
   if(pollTimer)clearInterval(pollTimer);
   if(!cfg)return;
   pollTimer=setInterval(async()=>{
     try{
-      const r=await jsRead();
-      if(JSON.stringify(r)!==JSON.stringify(shared)){
+      const r=await jbRead();
+      if(r&&JSON.stringify(r)!==JSON.stringify(shared)){
         shared={...initShared(),...r};
         if(!shared.dateIdeas||!shared.dateIdeas.length)shared.dateIdeas=[...DEFAULT_IDEAS];
         lsSet(DATA_KEY,shared);
-        renderAll();updateCounter();
-        ss('ok','Updated ✓');
+        renderAll();updateCounter();ss('ok','Updated ✓');
       }
     }catch(e){}
   },30000);
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  BOOT
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 async function boot(){
   cfg=lsGet(CFG_KEY);
   const cached=lsGet(DATA_KEY);
   shared=cached?{...initShared(),...cached}:initShared();
   if(!shared.dateIdeas||!shared.dateIdeas.length)shared.dateIdeas=[...DEFAULT_IDEAS];
 
-  // Show instantly from local cache — never wait for network
   document.getElementById('loading').style.display='none';
 
   if(!cfg){document.getElementById('setupScreen').style.display='flex';return;}
 
-  // Restore session from localStorage
   const savedMe=lsGet(ME_KEY);
   if(savedMe&&shared.persons&&shared.persons.find(p=>p.id===savedMe.id)){
-    enterAs(savedMe);
-    bgSync(); // fetch latest in background
-    return;
+    enterAs(savedMe);bgSync();return;
   }
-  showWhoScreen();
-  bgSync();
+  showWhoScreen();bgSync();
 }
 
-// Background fetch — updates UI silently if data has changed
 async function bgSync(){
   if(!cfg)return;
   ss('busy','Syncing…');
   try{
-    const r=await jsRead();
+    const r=await jbRead();
     if(r&&typeof r==='object'){
       shared={...initShared(),...r};
       if(!shared.dateIdeas||!shared.dateIdeas.length)shared.dateIdeas=[...DEFAULT_IDEAS];
       lsSet(DATA_KEY,shared);
-      renderAll();updateCounter();
-      ss('ok','Synced ✓');
+      renderAll();updateCounter();ss('ok','Synced ✓');
     }
   }catch(e){ss(null,'Offline — using local data');}
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  SETUP
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 async function saveConfig(){
   const apiKey=document.getElementById('cfg-apikey').value.trim();
-  const url=document.getElementById('cfg-url').value.trim();
-  const err=document.getElementById('setup-err'),btn=document.getElementById('setup-save-btn');
+  const binId=document.getElementById('cfg-binid').value.trim();
+  const errEl=document.getElementById('setup-err'),btn=document.getElementById('setup-save-btn');
 
-  if(!apiKey||!url){showErr('❌ Both fields are required.');return;}
-  if(!url.startsWith('https://api.jsonstorage.net')){showErr('❌ URL should start with https://api.jsonstorage.net');return;}
+  function showErr(msg){errEl.textContent=msg;errEl.style.display='block';}
 
-  err.style.display='none';btn.disabled=true;btn.textContent='Testing…';
+  if(!apiKey||!binId){showErr('❌ Both fields are required.');return;}
+  if(!apiKey.startsWith('$2')){showErr('❌ Master Key should start with $2a$ or $2b$ — check you copied the right key.');return;}
+
+  errEl.style.display='none';btn.disabled=true;btn.textContent='Testing connection…';
 
   try{
-    // Test read
-    const r=await fetch(url,{headers:{'Content-Type':'application/json'}});
-    if(!r.ok) throw new Error('Status '+r.status);
-    const existing=await r.json();
-    cfg={apiKey,url};lsSet(CFG_KEY,cfg);
-    // Merge any existing data
+    // Test: read the bin
+    const r=await fetch(`${JB_BASE}/${binId}/latest`,{
+      headers:{'X-Master-Key':apiKey}
+    });
+    if(r.status===401){throw new Error('Invalid Master Key');}
+    if(r.status===404){throw new Error('Bin not found — double-check the Bin ID');}
+    if(!r.ok){throw new Error('Status '+r.status);}
+    const json=await r.json();
+    const existing=json.record;
+
+    cfg={apiKey,binId};lsSet(CFG_KEY,cfg);
+
     if(existing&&typeof existing==='object'&&existing.persons){
+      // Existing data — merge in
       shared={...initShared(),...existing};
       if(!shared.dateIdeas||!shared.dateIdeas.length)shared.dateIdeas=[...DEFAULT_IDEAS];
       lsSet(DATA_KEY,shared);
     } else {
-      // First time — write initial data
-      await jsWrite(shared);
+      // First time — write initial blank data
+      await jbWrite(shared);
     }
     document.getElementById('setupScreen').style.display='none';
     showWhoScreen();
   }catch(e){
-    showErr('❌ Couldn\'t connect. Check your API key and URL, and make sure the item exists in your jsonstorage.net account.');
+    showErr('❌ Could not connect: '+e.message+'. Check your Master Key and Bin ID.');
     btn.disabled=false;btn.textContent='Connect & Save ♡';
   }
-
-  function showErr(msg){err.textContent=msg;err.style.display='block';}
 }
 
 function skipSetup(){document.getElementById('setupScreen').style.display='none';showWhoScreen();}
 
 function resetConfig(){
-  if(confirm('Reset sync settings? You\'ll need to re-enter your API key and URL.')){
+  if(confirm('Reset sync settings? You\'ll need to re-enter your Master Key and Bin ID.')){
     cfg=null;lsSet(CFG_KEY,null);me=null;lsSet(ME_KEY,null);
     if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
     document.getElementById('app').style.display='none';
@@ -757,9 +720,9 @@ function resetConfig(){
   }
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  WHO SCREEN
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function showWhoScreen(){
   document.getElementById('whoScreen').style.display='flex';
   document.getElementById('who-form').style.display='none';
@@ -800,9 +763,9 @@ function switchUser(){
   document.getElementById('app').style.display='none';showWhoScreen();
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  APP INIT
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function initApp(){
   document.getElementById('name1').value=shared.name1||'';
   document.getElementById('name2').value=shared.name2||'';
@@ -840,14 +803,12 @@ function switchTab(id,el){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   el.classList.add('active');document.getElementById('panel-'+id).classList.add('active');
-  if(id==='stats')renderStats();
-  if(id==='morning')renderMorning();
-  if(id==='quiz')renderQuiz();
+  if(id==='stats')renderStats();if(id==='morning')renderMorning();if(id==='quiz')renderQuiz();
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  MEMORIES
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addMemory(){
   const title=document.getElementById('m-title').value.trim();if(!title){alert('Add a title ♡');return;}
   if(!shared.memories)shared.memories=[];
@@ -874,9 +835,9 @@ function renderMemories(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  ANNIVERSARIES
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function daysDiff(ds){const[y,mo,d]=ds.split('-').map(Number),t=new Date();t.setHours(0,0,0,0);return Math.floor((new Date(y,mo-1,d)-t)/86400000);}
 function sortKey(ds){const d=daysDiff(ds);return d>=0?d:100000+Math.abs(d);}
 function addAnniversary(){
@@ -906,9 +867,9 @@ function renderAnniversaries(){
   }).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  DATE IDEAS
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function renderDateIdeas(){
   const el=document.getElementById('date-ideas-grid');if(!el)return;
   el.innerHTML=(shared.dateIdeas||[]).map((d,i)=>`
@@ -931,9 +892,9 @@ function addDateIdea(){
   save();renderDateIdeas();['di-name','di-emoji','di-desc'].forEach(i=>document.getElementById(i).value='');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  LOVE NOTES
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function selMood(btn,mood){document.querySelectorAll('#mood-row .mood-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');selectedMood=mood;}
 function addNote(){
   const text=document.getElementById('n-text').value.trim();if(!text){alert('Write something sweet ♡');return;}
@@ -955,9 +916,9 @@ function renderNotes(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  BUCKET LIST
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addBucket(){
   const text=document.getElementById('b-text').value.trim();if(!text)return;
   if(!shared.bucketList)shared.bucketList=[];
@@ -980,9 +941,9 @@ function renderBucket(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  PLAYLIST
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addSong(){
   const title=document.getElementById('s-title').value.trim();if(!title)return;
   if(!shared.playlist)shared.playlist=[];
@@ -1006,9 +967,9 @@ function renderPlaylist(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  PLACES
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addPlace(){
   const name=document.getElementById('pl-name').value.trim();if(!name)return;
   if(!shared.places)shared.places=[];
@@ -1032,9 +993,9 @@ function renderPlaces(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  DEBATES
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addDebate(){
   const topic=document.getElementById('deb-topic').value.trim();if(!topic)return;
   if(!shared.debates)shared.debates=[];
@@ -1060,9 +1021,9 @@ function renderDebates(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  COUNTERS
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addCounter(){
   const name=document.getElementById('cnt-name').value.trim();if(!name)return;
   if(!shared.counters)shared.counters=[];
@@ -1086,9 +1047,9 @@ function renderCounters(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  GRATITUDE JAR
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addGratitude(){
   const text=document.getElementById('g-text').value.trim();if(!text)return;
   if(!shared.gratitude)shared.gratitude=[];
@@ -1110,9 +1071,9 @@ function renderGratitude(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  MORNING MESSAGE
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function saveMorning(){
   const text=document.getElementById('morn-text').value.trim();if(!text)return;
   shared.morningMsg={text,from:me?me.name:'',ts:new Date().toLocaleDateString()};
@@ -1125,9 +1086,9 @@ function renderMorning(){
   el.innerHTML=`<div class="morning-card"><div class="sun">☀️</div><div class="morning-msg-text">"${x(m.text)}"</div><div class="morning-from">${m.from?'— '+x(m.from)+' · ':''}<span>${m.ts||''}</span></div></div>`;
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  QUIZ
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addQuiz(){
   const question=document.getElementById('q-question').value.trim(),answer=document.getElementById('q-answer').value.trim();
   if(!question||!answer)return;
@@ -1156,9 +1117,9 @@ function renderQuiz(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  TIME CAPSULE
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function addCapsule(){
   const title=document.getElementById('cap-title').value.trim(),openDate=document.getElementById('cap-date').value,text=document.getElementById('cap-text').value.trim();
   if(!title||!openDate||!text)return;
@@ -1184,9 +1145,9 @@ function renderCapsules(){
   }).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  MOOD LOG
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function selMoodLog(btn,emoji,label){document.querySelectorAll('#mood-log-row .mood-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');moodLogSel={emoji,label};}
 function logMood(){
   if(!moodLogSel.emoji){alert('Pick a mood first ♡');return;}
@@ -1210,9 +1171,9 @@ function renderMoodLog(){
   </div>`;
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  STATS
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function renderStats(){
   updateVL();
   const days=shared.startDate?Math.max(0,Math.floor((new Date()-new Date(shared.startDate))/86400000)):0;
@@ -1227,9 +1188,9 @@ function renderStats(){
   ].map(s=>`<div class="stat-card"><div class="stat-num">${s.n}</div><div class="stat-label">${s.l}</div></div>`).join('');
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  VIBE CHECK
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function setVibe(n,btn,mood){btn.closest('.card-row > div').querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');vibes[n]=mood;checkVibes();}
 function checkVibes(){
   if(!vibes[1]||!vibes[2])return;
@@ -1237,9 +1198,9 @@ function checkVibes(){
   document.getElementById('vibe-result').textContent=map[vibes[1]+'+'+vibes[2]]||'💖 Different moods, same love. Check in today ♡';
 }
 
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 //  CONFETTI
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════
 function doConfetti(){
   const c=document.createElement('canvas');c.className='confetti';document.body.appendChild(c);
   const ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;
